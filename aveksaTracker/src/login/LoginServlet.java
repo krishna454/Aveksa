@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 		String dbUsername, dbPassword;
 		boolean login = false;
 		HttpSession session = request.getSession(true); 
-		System.out.println("seesion request");
+		//System.out.println("seesion request");
 		MySQLConnection MySQLConnection=new MySQLConnection();
 		
 		Connection con=MySQLConnection.getCon();
@@ -55,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 	
 		
 	    Statement st = (Statement) con.createStatement();
-        System.out.println("creating statement");
+       // System.out.println("creating statement");
         ResultSet rs =  st.executeQuery("select * from userdetails");
         while(rs.next()){
         dbUsername = rs.getString("userid");
