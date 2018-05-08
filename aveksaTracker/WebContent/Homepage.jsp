@@ -121,7 +121,7 @@ tr:nth-child(even) {
           </li>
            
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards"></a>
+            <a class="nav-link js-scroll-trigger" href="#awards">Aveksa Tickets Dump</a>
           </li>
           
           <li class="nav-item">
@@ -437,59 +437,6 @@ for(TestTablePojo testTable : TestTablelist) {
           
           <a href="readExcel.jsp" >click me to extract</a>
 
-     <!--     <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-          <ul class="list-inline list-icons">
-            <li class="list-inline-item">
-              <i class="devicons devicons-html5"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-css3"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-javascript"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-jquery"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-sass"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-less"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-bootstrap"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-wordpress"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-grunt"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-gulp"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="devicons devicons-npm"></i>
-            </li>
-          </ul>
-
-          <div class="subheading mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams</li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum</li>
-          </ul>
-        </div>  --> 
         
         
         </div>
@@ -573,38 +520,12 @@ for(TestTablePojo testTable : TestTablelist) {
           
       </section>
 
+<!-- Aveksa tickets Dump  -->
+
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
-          <h2 class="mb-5">Awards &amp; Certifications</h2>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Google Analytics Certified Developer</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              Mobile Web Specialist - Google Certification</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2009</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              2<sup>nd</sup>
-              Place - University of Colorado Boulder - Emerging Tech Competition 2008</li>
-            <li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              1<sup>st</sup>
-              Place - James Buchanan High School - Hackathon 2006</li>
-            <li>
-              <i class="fa-li fa fa-trophy text-warning"></i>
-              3<sup>rd</sup>
-              Place - James Buchanan High School - Hackathon 2005</li>
-          </ul>
+          <h2 class="mb-5">aveksa tickets Dump</h2>
+         <a href="aveksaTicketsDump.jsp" >click me to pull aveksa tickets Dump</a>
         </div>
       </section>
 
