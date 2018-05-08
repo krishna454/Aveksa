@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet {
         	}
         	else {
             	session.setAttribute("errorMessage","Invalid Credentials");
-            	 response.sendRedirect("ErrorPage.jsp");
+            	 response.sendRedirect("Login.jsp");
             }
         }
         

@@ -25,7 +25,7 @@ public class TestTabletTest {
 			
 				
 			    Statement st = (Statement) con.createStatement();
-		        System.out.println("creating statement for TestTable");
+		       // System.out.println("creating statement for TestTable");
 		        ResultSet rs =  st.executeQuery("select * from testtable");
 		        while(rs.next()){
 		        	TestTablePojo TestTablePojo=new TestTablePojo();
@@ -64,6 +64,8 @@ public class TestTabletTest {
 		{
 			System.out.println(itr.next());
 		}
+		
+		MySQLConnection=null;
 	}
 
 }

@@ -16,7 +16,7 @@ public class TestConnection {
                 System.out.println("Connected to MySQL");
                 
                Statement st = (Statement) con.createStatement();
-                System.out.println("creating statement");
+                //System.out.println("creating statement");
                 ResultSet rs =  st.executeQuery("select * from userdetails");
                 
                while(rs.next())

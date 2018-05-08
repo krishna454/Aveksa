@@ -48,7 +48,7 @@ public class AveksaTickets extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Aveksa tickets servlet has been loaded");
+		//System.out.println("Aveksa tickets servlet has been loaded");
 		
 		ArrayList<TestTablePojo> TestTablelist=new ArrayList<TestTablePojo>();
 		
@@ -60,7 +60,7 @@ public class AveksaTickets extends HttpServlet {
 			
 				
 			    Statement st = (Statement) con.createStatement();
-		        System.out.println("creating statement for TestTable");
+		       // System.out.println("creating statement for TestTable");
 		        ResultSet rs =  st.executeQuery("select * from testtable");
 		        while(rs.next()){
 		        	TestTablePojo TestTablePojo=new TestTablePojo();
@@ -86,7 +86,8 @@ public class AveksaTickets extends HttpServlet {
 		        	TestTablelist.add(TestTablePojo);
 		        	
 		        	        }
-		        
+		        st.close();
+		        rs.close();
 		        con.close();
 		    
 		        }
