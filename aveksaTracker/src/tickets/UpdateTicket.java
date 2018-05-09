@@ -18,14 +18,13 @@ import pojo.TestTablePojo;
 
 	public class UpdateTicket {
 
+//updating the data  on table
 
-
-	synchronized public void updateTickets(int num,int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,int Assignee,int Ticket_Status) throws SQLException
+	synchronized public void updateTickets(int num, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,int Assignee,int Ticket_Status) throws SQLException
 		{
 		
 	
 		String Form_type1=null,Ticket_type1=null,Ticket_Category1=null,Location1=null,Ticket_Status1=null,AFX1=null,Assigned=null;
-		
 		
 		
 		MySQLConnection DBConnection=new MySQLConnection();
@@ -43,8 +42,9 @@ import pojo.TestTablePojo;
 			 Location1=rs.getString("Location");
 			 Ticket_Status1=rs.getString("Ticket_Status");
 			 AFX1=rs.getString("AFX");
-			 Assigned=rs.getNString("Assignee");
-			
+			 Assigned=rs.getString("Assignee");
+		
+			 
 			
 		 }
 		
@@ -84,7 +84,7 @@ import pojo.TestTablePojo;
 	 //AFX
 	   selectedForm=formTypeArrayList.getAFX(AFX1);
 	   String getAFX=(String) selectedForm.get(AFX);
-	   //AFX
+	   //Assignee
 	   selectedForm=formTypeArrayList.getAssignee(Assigned);
 	   String getAssignee=(String) selectedForm.get(Assignee);	
 				
@@ -92,28 +92,27 @@ import pojo.TestTablePojo;
 			//System.out.println("id in update class is "+num);
 		//	TestTableData testTableData=new TestTableData();
 				
-				
+		String query="update testtable set  Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'";	
 				 if(getAFX.equalsIgnoreCase("yes"))
 				 {
 					getAssignee="Dileep";
 					getTicket_Status="Completed";
 			            	
-			            	  st.executeUpdate("update testtable set Form_Type='"+getForm_type+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"',Completed_Date='"+Completed_Date+"'  where testtable_id='"+num+"'");
+			            	  st.executeUpdate(query);
 			         
 			           
 				 }
 			
 				 else {
 					 
-				
-            
+		            
             if(getTicket_Status.equals("Completed"))
             {
             	
-            	  st.executeUpdate("update testtable set Form_Type='"+getForm_type+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"',Completed_Date='"+Completed_Date+"'  where testtable_id='"+num+"'");
+            	  st.executeUpdate(query);
             }
             else {
-            st.executeUpdate("update testtable set Form_Type='"+getForm_type+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'");
+            st.executeUpdate(query);
          //  System.out.println("automation null is executed");
             
             }
@@ -128,6 +127,37 @@ import pojo.TestTablePojo;
 			formTypeArrayList=null;
 			
 		}
+	
+	
+	synchronized public void updateUnAssignedTickets(int num,int Assignee) throws SQLException
+	{
+		
+	//String for getting values from database
+		String Assigned=null;
+		
+		FormTypeArrayList formTypeArrayList=new FormTypeArrayList();  
+		MySQLConnection DBConnection=new MySQLConnection();
+		Connection conn = DBConnection.getCon();
+		 Statement st=conn.createStatement();
+		 
+ResultSet rs=st.executeQuery("select Assignee from testtable where testtable_id='"+num+"'");
+		 
+		 while(rs.next())
+		 {
+			 
+			 Assigned=rs.getString("Assignee");
+		
+			 
+			
+		 }
+		  //Assignee
+			ArrayList  selectedForm=formTypeArrayList.getAssignee(Assigned);
+			   String getAssignee=(String) selectedForm.get(Assignee);	
+		 
+		 String query="update testtable set  Assignee='"+getAssignee+"'  where testtable_id='"+num+"'";	
+		  st.executeUpdate(query);
+		 
+	}
 		
 
 }

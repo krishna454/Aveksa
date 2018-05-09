@@ -79,9 +79,11 @@ public class ExtractingTickets {
 	String extract="select * from aveksaticketextract where name not in(select name from  testtable)";
 	
 	//String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,)" + "VALUES(?,?,?,?,?,?)";	
-	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date"+"Assignee)" + "VALUES(?,?,?,?,?,?,?)";	
+	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee)" + "VALUES(?,?,?,?,?,?,?,?)";	
 			
-			String state="Un Assigned";
+			String state="UnAssigned";
+			String AFX="No";
+			String Assignee="NotAssigned";
 			String queDate=dtf.format(now);
 			
 			
@@ -125,23 +127,34 @@ public class ExtractingTickets {
 	            	 testtable_id=testtable_id+1; 
 	               String name = rs.getString(1);
 	              String rdate = rs.getString(2);
-	                           
 	              
+	              pstmt.setInt(1,testtable_id);     
+	              if(name.contains("-"))
+	              {
 	              String [] arrOfStr = name.split("-", 2);
 	       
 	              for (String a : arrOfStr)
 	                  //System.out.println(a);
 	              
 	              //System.out.println(name+" "+rdate);
-	               pstmt.setInt(1,testtable_id);
-	               pstmt.setString(2, arrOfStr[1]);
-	               pstmt.setString(3, name);
+	               
+	               pstmt.setString(2, arrOfStr[1]); arrOfStr=null;
+	              }
+	               else
+	               {
+	 	               pstmt.setString(2, name);
+	 	             
+	               }
+	              pstmt.setString(3, name);
 	               pstmt.setString(4, state);
 	               pstmt.setString(5, rdate);
 	               pstmt.setString(6, queDate);
+	               pstmt.setString(7, AFX);
+	               pstmt.setString(8, Assignee);
 	               pstmt.executeUpdate();
 	              // System.out.println("tickets updated successfully ");
-	               arrOfStr=null;
+	             
+	              
 	             }
 	             rs.close();
 	             rs2.close();

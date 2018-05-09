@@ -27,12 +27,11 @@
 ExtractingTickets extractingTickets= new ExtractingTickets();
  extractingTickets.inserDataFromExceltotable();
  
- 
 extractingTickets.extractTicket();
 
  %>
 <h1> Tickets extracted succesfully Please check in Un-assigned tickets tab</h1>
- <a href="Homepage.jsp" >click me to Home for Un Assigned Tickets</a>
+ <a href="unAssignedTickts.jsp" >click me to show Un Assigned Tickets</a>
  
  </body>  
  </html>  

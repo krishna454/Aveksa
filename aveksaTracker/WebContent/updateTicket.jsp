@@ -10,24 +10,44 @@ String Ticket_Id=request.getParameter("Ticket_Id");
 String Name=request.getParameter("Name");
 String Form_Type=request.getParameter("Form_Type");
 int formtype=Integer.parseInt(Form_Type);
+
+
+String No_of_Users=request.getParameter("No_of_Users");
+int no_of_Users=Integer.parseInt(No_of_Users);
+
+String No_of_Targets=request.getParameter("No_of_Targets");
+int no_of_Targets=Integer.parseInt(No_of_Targets);
+
+String No_of_Events=request.getParameter("No_of_Events");
+int no_of_Events=Integer.parseInt(No_of_Events);
+
+
 String Ticket_Type=request.getParameter("Ticket_Type");
 int tickettype=Integer.parseInt(Ticket_Type);
+
 String Ticket_Category=request.getParameter("Ticket_Category");
 int ticketCategory=Integer.parseInt(Ticket_Category);
+
 String Department=request.getParameter("Department");
+
 String Location=request.getParameter("Location");
 int location=Integer.parseInt(Location);
+
 String Company_Name=request.getParameter("Company_Name");
+
 String AFX=request.getParameter("AFX");
 int afx=Integer.parseInt(AFX);
+
 String Assignee=request.getParameter("Assignee");
 int Assigned=Integer.parseInt(Assignee);
+
 String Ticket_Status=request.getParameter("Ticket_Status");
 int ticketStatus=Integer.parseInt(Ticket_Status);
+
 //String Completed_Date=request.getParameter("Completed_Date");
 
 UpdateTicket updateTicket=new UpdateTicket();
-updateTicket.updateTickets(num,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx, Assigned, ticketStatus);
+updateTicket.updateTickets(num,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx, Assigned, ticketStatus);
 
 System.out.println(AFX);
 response.sendRedirect("Homepage.jsp");

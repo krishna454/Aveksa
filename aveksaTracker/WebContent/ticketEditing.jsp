@@ -10,7 +10,7 @@
 <form method="post" action="updateTicket.jsp">
 <table border="1">
  <tr>
-     <th>Update</th>
+     
  <th>S.No</th>
     <th>Id</th>
     <th>Name</th>
@@ -52,8 +52,8 @@ ArrayList<TestTablePojo> TestTablelist = editingTickets.editTicket(no);
 for(TestTablePojo testTable : TestTablelist) {
 %>
 <tr>
-<td><input type="submit" name="Submit" value="Update" style="background-color:#49743D;font-weight:bold;color:#ffffff;"></td>
-<td><input type="hidden" name="Testtable_id" value="<%=testTable.getTesttable_id()%>">
+
+ <td><input type="hidden" name="Testtable_id" value="<%=testTable.getTesttable_id()%>">
 <%=testTable.getTesttable_id()%>
 </td>
 <td><%=testTable.getTicket_Id()%></td>
@@ -230,6 +230,7 @@ for(TestTablePojo testTable : TestTablelist) {
  
    <td><%=testTable.getCompleted_Date()%></td>	
     <td><input type="test" name="Comments" value="<%=testTable.getComments()%>"></td>
+    <td><input type="submit" name="Submit" value="Update" style="background-color:#49743D;font-weight:bold;color:#ffffff;"></td>
 
 </tr>
 <%

@@ -105,23 +105,36 @@ tr:nth-child(even) {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#skills">Extract Tickets</a>
+            <a class="nav-link js-scroll-trigger" href="readExcel.jsp">Extract Tickets</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#interests">Un Assigned Tickets</a>
+          
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="unAssignedTickts.jsp">Un Assigned Tickets</a>
           </li>
+          
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">All Aveksa Tickets</a>
+            <a class="nav-link js-scroll-trigger" href="#interests">Tickets Assigned to me</a>
+          </li>
+	
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">All  Tickets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#experience">In-Progress</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education"> A Waiting user Info</a>
+            <a class="nav-link js-scroll-trigger" href="#education"> A Waiting user Info & Confirmation</a>
           </li>
            
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#awards">Aveksa Tickets Dump</a>
+      <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#awards">Completed Tickets</a>
+          </li>
+          
+         
+           <li class="nav-item">
+           
+           
+        
           </li>
           
           <li class="nav-item">
@@ -129,6 +142,8 @@ tr:nth-child(even) {
     <input type="submit" value="Logout" />
     </form>
           </li>
+          
+         
         </ul>
       </div>
     </nav>
@@ -152,7 +167,8 @@ tr:nth-child(even) {
             
           </h3>
        
-          
+     <%String userName=session.getAttribute("userName").toString(); %>  
+        
           <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
@@ -162,6 +178,8 @@ tr:nth-child(even) {
             <div class="resume-content mr-auto">
               <h3 class="mb-0">
               
+              
+              <a href="aveksaTicketsDump.jsp" >click me<img src="img/download.jpg" height="85px" width="53px" alt="Mountain View"> to pull aveksa tickets Dump</a>
           
           <!-- finding a ticket -->
           
@@ -172,8 +190,12 @@ tr:nth-child(even) {
           <button type="button" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
           </form>
           
-          
+    <!-- showing All Avkes Tickets -->      
           All Tickets
+          
+          
+          
+          
     <form method="post" name="form">
 <table>     
      
@@ -181,7 +203,7 @@ tr:nth-child(even) {
     
   
   <tr>
-    <th>Editing</th>
+   <!--   <th>Editing</th>-->
     <th>S.No</th>
     <th>Id</th>
     <th>Name</th>
@@ -218,7 +240,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	%>
 	
 	<tr>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editRecord(<%=testTable.getTesttable_id()%>);" ></td>
+<!-- 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editRecord(<%=testTable.getTesttable_id()%>);" ></td> -->
 	<td><%= testTable.getTesttable_id() %></td>
     <td><%=testTable.getTicket_Id() %></td>
     <td><%=testTable.getName()%></td>
@@ -254,7 +276,7 @@ for(TestTablePojo testTable : TestTablelist) {
        
       </section> 
        
-    
+   
 <!-- Inprogress tickets -->
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
@@ -299,8 +321,9 @@ for(TestTablePojo testTable : TestTablelist) {
 for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
+	String assigneed= testTable.getAssignee();
 	
-	if(status.equalsIgnoreCase("inprogress"))
+	if(status.equalsIgnoreCase("inprogress") && assigneed.equalsIgnoreCase(userName) )
 			{
 	%>
 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
@@ -385,8 +408,8 @@ for(TestTablePojo testTable : TestTablelist) {
 for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
-	
-	if(status.equalsIgnoreCase("Awaiting User info"))
+	String assigneed= testTable.getAssignee();
+	if( assigneed.equalsIgnoreCase(userName)  && status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("On-Hold")||status.equalsIgnoreCase("Awaiting User confirmation"))
 			{
 	%>
 	
@@ -431,20 +454,23 @@ for(TestTablePojo testTable : TestTablelist) {
 
 
 <!-- Remaing  -->
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+       <!--    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
-          <h2 class="mb-5">Extracting Tickets</h2>
+       <h2 class="mb-5">Extracting Tickets</h2>
           
-          <a href="readExcel.jsp" >click me to extract</a>
+          <a href="readExcel.jsp" >click me to extract tickets</a>
 
         
         
         </div>
-      </section>
+      </section>-->
+
+
+<!--Tickets Assigned to me  -->
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
-          <h2 class="mb-5">Un Assigned Tickets</h2>
+          <h2 class="mb-5">Tickets Assigned to me</h2>
            <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">
@@ -479,14 +505,21 @@ for(TestTablePojo testTable : TestTablelist) {
   
 <%
 
+
 for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
+	String assigned=testTable.getAssignee();
 	
-	if(status.equalsIgnoreCase("unassigned"))
-			{
+	
+	 if(status.equalsIgnoreCase("unassigned") && assigned.equalsIgnoreCase(userName))
+		
+	{
+		
+	
 	%>
-	 <td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
+	<tr>
+	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
 	<td><%= testTable.getTesttable_id() %></td>
     <td><%=testTable.getTicket_Id() %></td>
     <td><%=testTable.getName()%></td>
@@ -510,9 +543,9 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 	
 	<%
-	
-			}
-    }
+	}
+			
+}
  
 %>
 </table>
@@ -525,7 +558,7 @@ for(TestTablePojo testTable : TestTablelist) {
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
           <h2 class="mb-5">aveksa tickets Dump</h2>
-         <a href="aveksaTicketsDump.jsp" >click me to pull aveksa tickets Dump</a>
+         
         </div>
       </section>
 
