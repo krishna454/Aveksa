@@ -30,10 +30,16 @@ function unassignedform(id){
     f.action='ticketEditing.jsp?id='+id;
     f.submit();
 	
+}function CompletedForm(id){
+	var f=document.CompletedForm;
+    f.method="post";
+    f.action='ticketEditing.jsp?id='+id;
+    f.submit();
+	
 }
 </script>
   
-  
+   <%String userName=session.getAttribute("userName").toString(); %>  
   
   <!--Table design  -->
   
@@ -111,10 +117,18 @@ tr:nth-child(even) {
            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="unAssignedTickts.jsp">Un Assigned Tickets</a>
           </li>
-          
+         <%  if(userName.equalsIgnoreCase("gladys"))
+        
+		{
+		}
+         else{
+        	 %> 
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#interests">Tickets Assigned to me</a>
           </li>
+	<%
+		}
+	%>
 	
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">All  Tickets</a>
@@ -125,11 +139,21 @@ tr:nth-child(even) {
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#education"> A Waiting user Info & Confirmation</a>
           </li>
-           
+        <%  
+        
+        
+        
+        if(userName.equalsIgnoreCase("gladys")||userName.equalsIgnoreCase("Ram"))
+        
+		{
+        	 %> 
+	
       <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#awards">Completed Tickets</a>
           </li>
-          
+          <%
+		}
+          %>
          
            <li class="nav-item">
            
@@ -167,7 +191,7 @@ tr:nth-child(even) {
             
           </h3>
        
-     <%String userName=session.getAttribute("userName").toString(); %>  
+    
         
           <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
@@ -272,7 +296,7 @@ for(TestTablePojo testTable : TestTablelist) {
 
 </table></form>
          </h3></div>
-        
+        </div></div>
        
       </section> 
        
@@ -356,9 +380,8 @@ for(TestTablePojo testTable : TestTablelist) {
  
 %>
 </table>
-</h3>
-              </div>
-          </div></div></section>
+</h3>  </form>             </div>
+         </div></div></section>
 
 
       
@@ -445,11 +468,8 @@ for(TestTablePojo testTable : TestTablelist) {
  
 %>
 </table>
-</h3> </div>
-
-              </div></div>
-        </div>
-      </section>
+</form></h3></div></div></div></section>
+     
 
 
 
@@ -550,19 +570,95 @@ for(TestTablePojo testTable : TestTablelist) {
 %>
 </table>
 </h3> 
-          
-      </section>
+</div></div></div></section></table></h3></div></div></div></section></div>
+ 
 
-<!-- Aveksa tickets Dump  -->
+<!-- Completed Tickets  -->
 
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
-        <div class="my-auto">
-          <h2 class="mb-5">aveksa tickets Dump</h2>
-         
-        </div>
-      </section>
+       <div class="my-auto">  
+          <h2 class="mb-5">Completed tickets</h2>
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">
+           
+      <form method="post" name="CompletedForm">
+<table>    
+  
+  <tr>
+  <th>Editing</th>
+     <th>S.No</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Form Type</th>
+    <th>Request_Date</th>    
+    <th>Queued_Date</th>
+    <th>No_of_Users</th>
+    <th>No_of_Targets</th>    
+    <th>Provisioning_Events</th>
+    <th>Ticket_Type</th>
+    <th>Ticket_Category</th>    
+    <th>Department</th>
+    <th>Location</th>
+    <th>Company_Name</th>
+    <th>AFX</th>    
+    <th>Assignee</th>
+    <th>Completed_Date</th>
+    <th>Ticket_Status</th>
+    <th>Comments</th>
+     
+  </tr> 
+ 
+  
+<%
 
-    </div>
+for(TestTablePojo testTable : TestTablelist) {
+	
+	String status=testTable.getTicket_Status();
+	String assigneed= testTable.getAssignee();
+	
+	if(status.equalsIgnoreCase("completed"))
+			{
+		
+			%>
+	<tr>
+	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editCompletedRecord(<%=testTable.getTesttable_id()%>);" ></td>
+	
+	
+	<td><%= testTable.getTesttable_id() %></td>
+    <td><%=testTable.getTicket_Id() %></td>
+    <td><%=testTable.getName()%></td>
+    <td><%=testTable.getForm_Type() %></td>
+    <td><%=testTable.getRequest_Date()%></td>
+    <td><%=testTable.getQueued_Date()%></td>
+    <td><%=testTable.getNo_of_Users()%></td>
+    <td><%=testTable.getNo_of_Targets()%></td>
+    <td><%=testTable.getProvisioning_Events()%></td>
+    <td><%=testTable.getTicket_Type()%></td>
+    <td><%=testTable.getTicket_Category() %></td>
+    <td><%=testTable.getDepartment()%></td>
+    <td><%=testTable.getLocation()%></td>
+    <td><%=testTable.getCompany_Name()%></td>
+    <td><%=testTable.getAFX()%></td>        
+   <td><%=testTable.getAssignee() %></td>
+    <td><%=testTable.getCompleted_Date() %></td>
+    <td><%=testTable.getTicket_Status() %></td>
+    <td><%=testTable.getComments()%></td>
+    
+	</tr>
+	
+	
+	<%
+		}}
+    
+ 
+%>
+</table>
+</h3>
+  </form></div></div></div></section>
+
+
+   
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
