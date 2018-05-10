@@ -4,21 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%@ page import ="excel.CreatingExcelFile" %>
 <title>Insert title here</title>
 </head>
 <body>
-
-<%
-
-String query="Select * from testtable";
-
-CreatingExcelFile creatingExcelFile=new CreatingExcelFile();
-creatingExcelFile.createAveksaTicketsDump(query);
-
-
-%>
-<a href="Homepage.jsp" >Successfully pull the dump please check in D drive the file name is AveksaTicketsData</a>
 
 </body>
 </html>

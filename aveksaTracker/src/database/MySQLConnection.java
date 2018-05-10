@@ -12,7 +12,7 @@ try {
 	
     Class.forName("com.mysql.jdbc.Driver");
     //System.out.println("Loaded driver");
-    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aveksa?user=root&password=root");
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Aveksa?useSSL=false&user=root&password=root");
    // System.out.println("Connected to MySQL");
 	
 			}

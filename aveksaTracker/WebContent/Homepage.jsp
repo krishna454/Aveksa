@@ -155,6 +155,11 @@ tr:nth-child(even) {
 		}
           %>
          
+         
+         
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="">Monthly and Weekly Decks</a>
+          </li>
            <li class="nav-item">
            
            
@@ -192,11 +197,8 @@ tr:nth-child(even) {
           </h3>
        
     
-        
-          <%@ page import="pojo.TestTablePojo" %>
-          <%@ page import ="java.util.ArrayList" %>
-          <%@ page import ="database.TestTableData" %>
-          
+
+       <!-- extracting tickets -->   
           
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
@@ -212,7 +214,9 @@ tr:nth-child(even) {
           <form id= class="example" action="action_page.php">
           <input type="text" placeholder="Search a ticket" name="search">
           <button type="button" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
-          </form>
+    
+       </form>
+   
           
     <!-- showing All Avkes Tickets -->      
           All Tickets
@@ -221,80 +225,9 @@ tr:nth-child(even) {
           
           
     <form method="post" name="form">
-<table>     
-     
-     
     
-  
-  <tr>
-   <!--   <th>Editing</th>-->
-    <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-    
-  </tr> 
- 
-<%
-
-
-TestTableData testTableData=new TestTableData();
-ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
-
-
-
-for(TestTablePojo testTable : TestTablelist) {
-	
-	
-	%>
-	
-	<tr>
-<!-- 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editRecord(<%=testTable.getTesttable_id()%>);" ></td> -->
-	<td><%= testTable.getTesttable_id() %></td>
-    <td><%=testTable.getTicket_Id() %></td>
-    <td><%=testTable.getName()%></td>
-    <td><%=testTable.getForm_Type() %></td>
-    <td><%=testTable.getRequest_Date()%></td>
-    <td><%=testTable.getQueued_Date()%></td>
-    <td><%=testTable.getNo_of_Users()%></td>
-    <td><%=testTable.getNo_of_Targets()%></td>
-    <td><%=testTable.getProvisioning_Events()%></td>
-    <td><%=testTable.getTicket_Type()%></td>
-    <td><%=testTable.getTicket_Category() %></td>
-    <td><%=testTable.getDepartment()%></td>
-    <td><%=testTable.getLocation()%></td>
-    <td><%=testTable.getCompany_Name()%></td>
-    <td><%=testTable.getAFX()%></td>        
-   <td><%=testTable.getAssignee() %></td>
-    <td><%=testTable.getCompleted_Date() %></td>
-    <td><%=testTable.getTicket_Status() %></td>
-    <td><%=testTable.getComments()%></td>  
-	</tr>
-	
-	
-	<%
-	
-
-    }
- 
-%>
-
-</table></form>
+    <jsp:include page="/tableDescription/allTickets.jsp" />
+</form>
          </h3></div>
         </div></div>
        
@@ -313,73 +246,9 @@ for(TestTablePojo testTable : TestTablelist) {
               <table>
      
     <form method="post" name="Inprogressform">
-<table>    
-  
-  <tr>
-  <th>Editing</th>
-     <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-     
-  </tr> 
- 
-  
-<%
-
-for(TestTablePojo testTable : TestTablelist) {
-	
-	String status=testTable.getTicket_Status();
-	String assigneed= testTable.getAssignee();
-	
-	if(status.equalsIgnoreCase("inprogress") && assigneed.equalsIgnoreCase(userName) )
-			{
-	%>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
-	<td><%= testTable.getTesttable_id() %></td>
-    <td><%=testTable.getTicket_Id() %></td>
-    <td><%=testTable.getName()%></td>
-    <td><%=testTable.getForm_Type() %></td>
-    <td><%=testTable.getRequest_Date()%></td>
-    <td><%=testTable.getQueued_Date()%></td>
-    <td><%=testTable.getNo_of_Users()%></td>
-    <td><%=testTable.getNo_of_Targets()%></td>
-    <td><%=testTable.getProvisioning_Events()%></td>
-    <td><%=testTable.getTicket_Type()%></td>
-    <td><%=testTable.getTicket_Category() %></td>
-    <td><%=testTable.getDepartment()%></td>
-    <td><%=testTable.getLocation()%></td>
-    <td><%=testTable.getCompany_Name()%></td>
-    <td><%=testTable.getAFX()%></td>        
-   <td><%=testTable.getAssignee() %></td>
-    <td><%=testTable.getCompleted_Date() %></td>
-    <td><%=testTable.getTicket_Status() %></td>
-    <td><%=testTable.getComments()%></td>
     
-	</tr>
-	
-	<%
-	
-			}
-    }
- 
-%>
-</table>
+     <jsp:include page="/tableDescription/inprogressTickets.jsp" />
+
 </h3>  </form>             </div>
          </div></div></section>
 
@@ -399,75 +268,9 @@ for(TestTablePojo testTable : TestTablelist) {
               <h3 class="mb-0">
      
                <form method="post" name="AWaitingInfoform">
-<table>    
-  
-  <tr>
-  <th>Editing</th>
- <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-     
-  </tr> 
- 
-  
-<%
 
-for(TestTablePojo testTable : TestTablelist) {
-	
-	String status=testTable.getTicket_Status();
-	String assigneed= testTable.getAssignee();
-	if( assigneed.equalsIgnoreCase(userName)  && status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("On-Hold")||status.equalsIgnoreCase("Awaiting User confirmation"))
-			{
-	%>
-	
-	<tr>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
-	<td><%= testTable.getTesttable_id() %></td>
-    <td><%=testTable.getTicket_Id() %></td>
-    <td><%=testTable.getName()%></td>
-    <td><%=testTable.getForm_Type() %></td>
-    <td><%=testTable.getRequest_Date()%></td>
-    <td><%=testTable.getQueued_Date()%></td>
-    <td><%=testTable.getNo_of_Users()%></td>
-    <td><%=testTable.getNo_of_Targets()%></td>
-    <td><%=testTable.getProvisioning_Events()%></td>
-    <td><%=testTable.getTicket_Type()%></td>
-    <td><%=testTable.getTicket_Category() %></td>
-    <td><%=testTable.getDepartment()%></td>
-    <td><%=testTable.getLocation()%></td>
-    <td><%=testTable.getCompany_Name()%></td>
-    <td><%=testTable.getAFX()%></td>        
-   <td><%=testTable.getAssignee() %></td>
-    <td><%=testTable.getCompleted_Date() %></td>
-    <td><%=testTable.getTicket_Status() %></td>
-    <td><%=testTable.getComments()%></td>
-    
-	</tr>
-	
-	
-	<%
-	
-			}
-    }
- 
-%>
-</table>
+<jsp:include page="/tableDescription/awaitingUser.jsp" />
+
 </form></h3></div></div></div></section>
      
 
@@ -496,79 +299,8 @@ for(TestTablePojo testTable : TestTablelist) {
               <h3 class="mb-0">
           
                          <form method="post" name="unassignedform">
-<table>    
-  
-  <tr>
-   <th>Editing</th>
-   <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-    
-  </tr> 
- 
-  
-<%
+                         <jsp:include page="/tableDescription/unAssignedTickets.jsp" />
 
-
-for(TestTablePojo testTable : TestTablelist) {
-	
-	String status=testTable.getTicket_Status();
-	String assigned=testTable.getAssignee();
-	
-	
-	 if(status.equalsIgnoreCase("unassigned") && assigned.equalsIgnoreCase(userName))
-		
-	{
-		
-	
-	%>
-	<tr>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
-	<td><%= testTable.getTesttable_id() %></td>
-    <td><%=testTable.getTicket_Id() %></td>
-    <td><%=testTable.getName()%></td>
-    <td><%=testTable.getForm_Type() %></td>
-    <td><%=testTable.getRequest_Date()%></td>
-    <td><%=testTable.getQueued_Date()%></td>
-    <td><%=testTable.getNo_of_Users()%></td>
-    <td><%=testTable.getNo_of_Targets()%></td>
-    <td><%=testTable.getProvisioning_Events()%></td>
-    <td><%=testTable.getTicket_Type()%></td>
-    <td><%=testTable.getTicket_Category() %></td>
-    <td><%=testTable.getDepartment()%></td>
-    <td><%=testTable.getLocation()%></td>
-    <td><%=testTable.getCompany_Name()%></td>
-    <td><%=testTable.getAFX()%></td>        
-   <td><%=testTable.getAssignee() %></td>
-    <td><%=testTable.getCompleted_Date() %></td>
-    <td><%=testTable.getTicket_Status() %></td>
-    <td><%=testTable.getComments()%></td>
-   </tr>
-	
-	
-	<%
-	}
-			
-}
- 
-%>
-</table>
 </h3> 
 </div></div></div></section></table></h3></div></div></div></section></div>
  
@@ -583,77 +315,7 @@ for(TestTablePojo testTable : TestTablelist) {
               <h3 class="mb-0">
            
       <form method="post" name="CompletedForm">
-<table>    
-  
-  <tr>
-  <th>Editing</th>
-     <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-     
-  </tr> 
- 
-  
-<%
-
-for(TestTablePojo testTable : TestTablelist) {
-	
-	String status=testTable.getTicket_Status();
-	String assigneed= testTable.getAssignee();
-	
-	if(status.equalsIgnoreCase("completed"))
-			{
-		
-			%>
-	<tr>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editCompletedRecord(<%=testTable.getTesttable_id()%>);" ></td>
-	
-	
-	<td><%= testTable.getTesttable_id() %></td>
-    <td><%=testTable.getTicket_Id() %></td>
-    <td><%=testTable.getName()%></td>
-    <td><%=testTable.getForm_Type() %></td>
-    <td><%=testTable.getRequest_Date()%></td>
-    <td><%=testTable.getQueued_Date()%></td>
-    <td><%=testTable.getNo_of_Users()%></td>
-    <td><%=testTable.getNo_of_Targets()%></td>
-    <td><%=testTable.getProvisioning_Events()%></td>
-    <td><%=testTable.getTicket_Type()%></td>
-    <td><%=testTable.getTicket_Category() %></td>
-    <td><%=testTable.getDepartment()%></td>
-    <td><%=testTable.getLocation()%></td>
-    <td><%=testTable.getCompany_Name()%></td>
-    <td><%=testTable.getAFX()%></td>        
-   <td><%=testTable.getAssignee() %></td>
-    <td><%=testTable.getCompleted_Date() %></td>
-    <td><%=testTable.getTicket_Status() %></td>
-    <td><%=testTable.getComments()%></td>
-    
-	</tr>
-	
-	
-	<%
-		}}
-    
- 
-%>
-</table>
+<jsp:include page="/tableDescription/completed.jsp" />
 </h3>
   </form></div></div></div></section>
 

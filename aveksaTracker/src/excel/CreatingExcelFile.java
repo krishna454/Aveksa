@@ -12,7 +12,7 @@ import  org.apache.poi.hssf.usermodel.HSSFCell;
 
 public class CreatingExcelFile{
    // public static void main(String[]args){
-	public void createAveksaTicketsDump() {
+	public void createAveksaTicketsDump(String query) {
 try{
 String filename="D:/AveksaTicketsData.xls" ;
 HSSFWorkbook hwb=new HSSFWorkbook();
@@ -43,7 +43,7 @@ rowhead.createCell((short) 17).setCellValue("Comments");
 MySQLConnection dbConnection=new MySQLConnection();
 Connection con=dbConnection.getCon();
 Statement st=con.createStatement();
-ResultSet rs=st.executeQuery("Select * from testtable");
+ResultSet rs=st.executeQuery(query);
 int i=1;
 while(rs.next()){
 HSSFRow row=   sheet.createRow((short)i);
