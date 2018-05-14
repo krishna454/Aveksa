@@ -12,32 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>    
-  
-  <tr>
-  <th>Editing</th>
- <th>S.No</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Form Type</th>
-    <th>Request_Date</th>    
-    <th>Queued_Date</th>
-    <th>No_of_Users</th>
-    <th>No_of_Targets</th>    
-    <th>Provisioning_Events</th>
-    <th>Ticket_Type</th>
-    <th>Ticket_Category</th>    
-    <th>Department</th>
-    <th>Location</th>
-    <th>Company_Name</th>
-    <th>AFX</th>    
-    <th>Assignee</th>
-    <th>Completed_Date</th>
-    <th>Ticket_Status</th>
-    <th>Comments</th>
-     
-  </tr> 
- 
+<jsp:include page="/tableDescription/tableHead.jsp" />
   
 <%
 TestTableData testTableData=new TestTableData();

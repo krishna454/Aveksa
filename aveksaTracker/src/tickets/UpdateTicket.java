@@ -20,7 +20,7 @@ import pojo.TestTablePojo;
 
 //updating the data  on table
 
-	synchronized public void updateTickets(int num, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,int Assignee,int Ticket_Status) throws SQLException
+	synchronized public void updateTickets(int num,String Ticket_Id, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,int Assignee,int Ticket_Status) throws SQLException
 		{
 		
 	
@@ -92,7 +92,7 @@ import pojo.TestTablePojo;
 			//System.out.println("id in update class is "+num);
 		//	TestTableData testTableData=new TestTableData();
 				
-		String query="update testtable set  Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'";	
+		String query="update testtable set Ticket_Id='"+Ticket_Id+"', Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'";	
 				 if(getAFX.equalsIgnoreCase("yes"))
 				 {
 					getAssignee="Dileep";

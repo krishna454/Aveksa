@@ -56,7 +56,25 @@ for(TestTablePojo testTable : TestTablelist) {
  <td><input type="hidden" name="Testtable_id" value="<%=testTable.getTesttable_id()%>">
 <%=testTable.getTesttable_id()%>
 </td>
-<td><%=testTable.getTicket_Id()%></td>
+<%
+if(testTable.getName().contains("Rule"))
+{
+	%>
+	<td><input type="Text" name="Ticket_Id" value="<%=testTable.getTicket_Id()%>"></td>
+	
+	<%
+	
+}
+else
+{
+	
+
+
+%>
+ <td><lable name="Ticket_Id" value="<%=testTable.getTicket_Id()%>"><%=testTable.getTicket_Id()%></lable></td>
+<%
+}
+%>
 <td><%=testTable.getName() %></td>
 <td>
  <select name = "Form_Type">

@@ -47,7 +47,7 @@ int ticketStatus=Integer.parseInt(Ticket_Status);
 //String Completed_Date=request.getParameter("Completed_Date");
 
 UpdateTicket updateTicket=new UpdateTicket();
-updateTicket.updateTickets(num,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx, Assigned, ticketStatus);
+updateTicket.updateTickets(num,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx, Assigned, ticketStatus);
 
 System.out.println(AFX);
 response.sendRedirect("Homepage.jsp");

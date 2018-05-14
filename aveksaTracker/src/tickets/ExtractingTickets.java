@@ -34,7 +34,7 @@ public class ExtractingTickets {
 		 
 		 PreparedStatement ps=con.prepareStatement(query);  
 		 
-		 
+		 try {
 		 int count=0;  
 		 ArrayList cellStoreArrayList=null;  
 		 //For inserting into database  
@@ -49,7 +49,11 @@ public class ExtractingTickets {
 		    count= ps.executeUpdate();  
 		    // System.out.print(((HSSFCell)cellStoreArrayList.get(2)).toString() + "t");  
 		     }  
-		 
+		 }
+		 catch(Exception e)
+		 {
+			// System.out.println("got error because "+e);
+		 }
 		 
 		 con.close();
 		 ps.close();
@@ -79,7 +83,7 @@ public class ExtractingTickets {
 	String extract="select * from aveksaticketextract where name not in(select name from  testtable)";
 	
 	//String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,)" + "VALUES(?,?,?,?,?,?)";	
-	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee)" + "VALUES(?,?,?,?,?,?,?,?)";	
+	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee,"+"Ticket_Type)" + "VALUES(?,?,?,?,?,?,?,?,?)";	
 			
 			String state="UnAssigned";
 			String AFX="No";
@@ -138,9 +142,10 @@ public class ExtractingTickets {
 	              
 	              //System.out.println(name+" "+rdate);
 	               
-	               pstmt.setString(2, arrOfStr[1]); arrOfStr=null;
+	               pstmt.setString(2, arrOfStr[1]);
+	              arrOfStr=null;
 	              }
-	               else
+	               else 
 	               {
 	 	               pstmt.setString(2, name);
 	 	             
@@ -151,6 +156,14 @@ public class ExtractingTickets {
 	               pstmt.setString(6, queDate);
 	               pstmt.setString(7, AFX);
 	               pstmt.setString(8, Assignee);
+	               
+	               if(name.contains("INC")|| name.contains("TASK"))
+	               {
+	            	   pstmt.setString(9, "Snow"); 
+	               }
+	               else {
+	            	   pstmt.setString(9, "Aveksa");
+	               }
 	               pstmt.executeUpdate();
 	              // System.out.println("tickets updated successfully ");
 	             
