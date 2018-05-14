@@ -20,7 +20,7 @@ import pojo.TestTablePojo;
 
 //updating the data  on table
 
-	synchronized public void updateTickets(int num,String Ticket_Id, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,int Assignee,int Ticket_Status) throws SQLException
+	synchronized public void updateTickets(int num,String Ticket_Id, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,String Assignee,int Ticket_Status) throws SQLException
 		{
 		
 	
@@ -84,10 +84,8 @@ import pojo.TestTablePojo;
 	 //AFX
 	   selectedForm=formTypeArrayList.getAFX(AFX1);
 	   String getAFX=(String) selectedForm.get(AFX);
-	   //Assignee
-	   selectedForm=formTypeArrayList.getAssignee(Assigned);
-	   String getAssignee=(String) selectedForm.get(Assignee);	
-				
+	 
+				String getAssignee=Assignee;
 			
 			//System.out.println("id in update class is "+num);
 		//	TestTableData testTableData=new TestTableData();

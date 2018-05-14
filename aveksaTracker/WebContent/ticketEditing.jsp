@@ -7,6 +7,9 @@
 <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="tickets.EditingTickets" %>
             <%@ page import="pojo.TestTablePojo" %>
+            
+              
+            <%String userid=session.getAttribute("userId").toString(); %> 
 <form method="post" action="updateTicket.jsp">
 <table border="1">
  <tr>
@@ -36,12 +39,27 @@
     
   </tr> 
 <%
+try {
+String admin=null;
+String userName=null;
+MySQLConnection MySQLConnection=new MySQLConnection();
+
+Connection con=MySQLConnection.getCon();
+
+Statement st = (Statement) con.createStatement();
+// System.out.println("creating statement");
+ResultSet rs =  st.executeQuery("select admin from userdetails where userid='"+userid+"' ");
+while(rs.next()){
+admin = rs.getString("Admin");
+//userName=rs.getString("userName");
+}
+
 
 String id=request.getParameter("id");
 int no=Integer.parseInt(id);
 //out.println(no);
 int sumcount=0;
-try {
+
 /*	
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");*/
@@ -155,6 +173,7 @@ else
     </select>
     </td>
     
+   
      <td>
      <select name = "Ticket_Category">
              <option value = "6" ><%=testTable.getTicket_Category()%></option>
@@ -217,15 +236,34 @@ else
  </td>        
    <td>
    
+    <%
+    
+    if(admin.equalsIgnoreCase("yes"))
+    		{
+    	//ResultSet rs =  st.executeQuery("select userName from userdetails")
+    	%>
+    	
+    	<select name = "Assignee">
+            <option value = "<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%></option>
+               <option value = "Ram">Ram</option>              
+               <option value = "Saurabh">Saurabh</option>
+               <option value = "Namrata">Namrata</option>
+               <option value = "Vijay">Vijay</option>
+               <option value = "Arun">Arun</option>
+   </select> 
+    	
+    	<%
+    		}
+    else
+    {
+    
+    %>    
    
-    <select name = "Assignee">
-            <option value = "5"><%=testTable.getAssignee()%></option>
-               <option value = "0">Ram</option>              
-               <option value = "1">Saurabh</option>
-               <option value = "2">Namrata</option>
-               <option value = "3">Vijay</option>
-               <option value = "4">Arun</option>
-   </select>
+   <label name="Assignee" value="<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%></label>
+  <%
+  
+    }
+  %>
    
   </td>
   
@@ -253,8 +291,15 @@ else
 </tr>
 <%
 }
+st.close();
+con.close();
+MySQLConnection=null;
 }
-catch(Exception e){}
+
+catch(Exception e)
+{
+}
+
 %>
 </table>
 </form>
