@@ -6,8 +6,12 @@
     <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
+           <%@ page import ="database.MySQLConnection" %>
+             <%@ page import ="java.sql.Connection" %>
+            <%@ page import ="java.sql.Statement" %>
+            <%@ page import ="java.sql.ResultSet" %>
           
-           <%String userName=session.getAttribute("userName").toString(); %> 
+           <%String userid=session.getAttribute("userId").toString(); %> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -15,6 +19,27 @@
 <jsp:include page="/tableDescription/tableHead.jsp" />
   
 <%
+String admin=null;
+String userName=null;
+MySQLConnection MySQLConnection=new MySQLConnection();
+
+Connection con=MySQLConnection.getCon();
+try {
+Statement st = (Statement) con.createStatement();
+// System.out.println("creating statement");
+ResultSet rs =  st.executeQuery("select * from userdetails where userid='"+userid+"' ");
+while(rs.next()){
+admin = rs.getString("Admin");
+userName=rs.getString("userName");
+}
+st.close();
+con.close();
+MySQLConnection=null;
+}
+catch(Exception e)
+{
+	
+}
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 

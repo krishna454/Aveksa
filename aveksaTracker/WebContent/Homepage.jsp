@@ -39,7 +39,7 @@ function unassignedform(id){
 }
 </script>
   
-   <%String userName=session.getAttribute("userName").toString(); %>  
+
   
   <!--Table design  -->
   
@@ -104,12 +104,79 @@ tr:nth-child(even) {
       
       
       
+      
+      
+      
+      
+              <%@ page import ="database.MySQLConnection" %>
+              <%@ page import ="java.sql.Connection" %>
+              <%@ page import ="java.sql.Statement" %>
+              <%@ page import ="java.sql.ResultSet" %>
+      
+      
+      
+      
+   <%
+   String userid=session.getAttribute("userId").toString(); 
+   String userName=null;
+   String admin=null;
+    		MySQLConnection MySQLConnection=new MySQLConnection();
+
+    		Connection con=MySQLConnection.getCon();
+    		try {
+    		Statement st = (Statement) con.createStatement();
+    		// System.out.println("creating statement");
+    		ResultSet rs =  st.executeQuery("select * from userdetails where userid='"+userid+"' ");
+    		while(rs.next()){
+    		userName = rs.getString("userName");
+    		admin=rs.getString("Admin");
+    		}
+      
+   
+   %>  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       <!-- Left side options -->
       
       
       
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" >Hi <%=userName %> </a>
+            
+          
+          </li>
+             <%  if(admin.equalsIgnoreCase("yes"))
+        
+		{
+		%>
+        
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="addEmployee.jsp">Add or Delete Employee </a>
+            <%
+            
+		}
+           
+            %>
+          
+          </li>
+          
+         
+          
         <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="readExcel.jsp">Extract Tickets</a>
           </li>
@@ -117,7 +184,7 @@ tr:nth-child(even) {
            <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="unAssignedTickts.jsp">Un Assigned Tickets</a>
           </li>
-         <%  if(userName.equalsIgnoreCase("gladys"))
+         <%  if(admin.equalsIgnoreCase("yes") && userName.equalsIgnoreCase("gladys"))
         
 		{
 		}
@@ -143,7 +210,7 @@ tr:nth-child(even) {
         
         
         
-        if(userName.equalsIgnoreCase("gladys")||userName.equalsIgnoreCase("Ram"))
+        if(admin.equalsIgnoreCase("yes"))
         
 		{
         	 %> 
@@ -153,25 +220,35 @@ tr:nth-child(even) {
           </li>
           <%
 		}
-          %>
-         
-         
-         
+          
+         if(admin.equalsIgnoreCase("yes"))
+        
+		{
+        	 %>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="">Monthly and Weekly Decks</a>
           </li>
+          
+           <%
+		}
+         %>
            <li class="nav-item">
            
-           
+            <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="">   <li class="nav-item">
+            <form action="LogoutServlet" method="post">
+             <input type="submit" value="Logout" />
+            </form>
+    
+    
+          </li>
+          </a>
+          </li>
+           <li class="nav-item">
         
           </li>
           
-          <li class="nav-item">
-            <form action="LogoutServlet" method="post">
-    <input type="submit" value="Logout" />
-    </form>
-          </li>
-          
+       
          
         </ul>
       </div>
@@ -192,7 +269,9 @@ tr:nth-child(even) {
        
    
       <h3 class="mb-0">Welcome 
-            <span class="text-primary"><%=session.getAttribute("userName")%></span>
+            <span class="text-primary"><%
+            out.print(userName); 
+            %></span>
             
           </h3>
        
@@ -214,8 +293,7 @@ tr:nth-child(even) {
           <form id= class="example" action="action_page.php">
           <input type="text" placeholder="Search a ticket" name="search">
           <button type="button" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
-    
-       </form>
+           </form>
    
           
     <!-- showing All Avkes Tickets -->      
@@ -259,7 +337,7 @@ tr:nth-child(even) {
 
 
      
-          <<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+          <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
           <h2 class="mb-5">Awaiting User Info</h2>
 
@@ -320,6 +398,19 @@ tr:nth-child(even) {
   </form></div></div></div></section>
 
 
+  <%
+  st.close();
+  con.close();
+  MySQLConnection=null;
+  
+  }
+  catch(Exception e)
+  {
+  	e.printStackTrace();
+  }
+ 
+  
+  %>
    
 
     <!-- Bootstrap core JavaScript -->

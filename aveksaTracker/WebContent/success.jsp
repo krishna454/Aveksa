@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<html> 
-<head> 
-<title>Error Page</title> </head>
- <body> 
- <h2>Sorry something went wrong please retry again</h2>
- <a href='passwordChange.jsp'> Go to Password reset Page</a>
-  </body> 
-  </html>
+<title>Success</title>
+</head>
+<body>
+<h2>Your password has been changed successfully</h2>
+<a href='Login.jsp'>Go to Login Page</a>
+</body>
+</html>

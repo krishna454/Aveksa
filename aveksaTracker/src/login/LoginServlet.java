@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String userName=request.getParameter("userName");
+		String userName=request.getParameter("userID");
 		System.out.println(userName);
 		String password=request.getParameter("password");
 		System.out.println(password);
@@ -70,7 +70,8 @@ public class LoginServlet extends HttpServlet {
             System.out.println("OK");
             login = true;
             
-            session.setAttribute("userName",rs.getString("userName"));
+            session.setAttribute("userId",dbUsername);
+           // System.out.println("user id was "+dbUsername);
             response.sendRedirect("Homepage.jsp");
             
         	}

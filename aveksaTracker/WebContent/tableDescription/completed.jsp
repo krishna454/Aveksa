@@ -6,8 +6,9 @@
    <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
+         
           
-           <%String userName=session.getAttribute("userName").toString(); %> 
+           <%String userName=session.getAttribute("userId").toString(); %> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -15,6 +16,8 @@
 <jsp:include page="/tableDescription/tableHead.jsp" />
   
 <%
+
+
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 
