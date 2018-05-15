@@ -8,7 +8,7 @@
           <%@ page import ="tickets.EditingTickets" %>
             <%@ page import="pojo.TestTablePojo" %>
             
-            
+          
 <form method="post" action="updateUnAssingedTicket.jsp">
 <table border="1">
  <tr>
@@ -46,12 +46,12 @@ for(TestTablePojo testTable : TestTablelist) {
 
    <td>
     <select name = "Assignee">
-            <option value = "5"><%=testTable.getAssignee()%></option>
-               <option value = "0">Ram</option>              
-               <option value = "1">Saurabh</option>
-               <option value = "2">Namrata</option>
-               <option value = "3">Vijay</option>
-               <option value = "4">Arun</option>
+            <option value = "<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%></option>
+               <option value = "Ram">Ram</option>              
+               <option value = "Saurabh">Saurabh</option>
+               <option value = "Namrata">Namrata</option>
+               <option value = "Vijay">Vijay</option>
+               <option value = "Arun">Arun</option>
    </select>
    
  </td>

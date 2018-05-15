@@ -181,12 +181,16 @@ tr:nth-child(even) {
             <a class="nav-link js-scroll-trigger" href="readExcel.jsp">Extract Tickets</a>
           </li>
           
-           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="unAssignedTickts.jsp">Un Assigned Tickets</a>
-          </li>
+          
          <%  if(admin.equalsIgnoreCase("yes") && userName.equalsIgnoreCase("gladys"))
         
 		{
+		%>
+        	 <li class="nav-item">
+             <a class="nav-link js-scroll-trigger" href="unAssignedTickts.jsp">Assigned Tickets</a>
+           </li>
+          
+           <%
 		}
          else{
         	 %> 
@@ -377,7 +381,7 @@ tr:nth-child(even) {
               <h3 class="mb-0">
           
                          <form method="post" name="unassignedform">
-                         <jsp:include page="/tableDescription/unAssignedTickets.jsp" />
+                         <jsp:include page="/tableDescription/assignedTicketsToMe.jsp" />
 
 </h3> 
 </div></div></div></section></table></h3></div></div></div></section></div>

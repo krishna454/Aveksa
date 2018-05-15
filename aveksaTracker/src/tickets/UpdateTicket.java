@@ -124,32 +124,18 @@ import pojo.TestTablePojo;
 		}
 	
 	
-	synchronized public void updateUnAssignedTickets(int num,int Assignee) throws SQLException
+	synchronized public void updateUnAssignedTickets(int num,String Assignee,String exctractedBy) throws SQLException
 	{
 		
 	//String for getting values from database
-		String Assigned=null;
+		//String Assigned=null;
 		
 		FormTypeArrayList formTypeArrayList=new FormTypeArrayList();  
 		MySQLConnection DBConnection=new MySQLConnection();
 		Connection conn = DBConnection.getCon();
 		 Statement st=conn.createStatement();
 		 
-ResultSet rs=st.executeQuery("select Assignee from testtable where testtable_id='"+num+"'");
-		 
-		 while(rs.next())
-		 {
-			 
-			 Assigned=rs.getString("Assignee");
-		
-			 
-			
-		 }
-		  //Assignee
-			ArrayList  selectedForm=formTypeArrayList.getAssignee(Assigned);
-			   String getAssignee=(String) selectedForm.get(Assignee);	
-		 
-		 String query="update testtable set  Assignee='"+getAssignee+"'  where testtable_id='"+num+"'";	
+		 String query="update testtable set  Assignee='"+Assignee+"',TicketsExtractedBy='"+exctractedBy+"'  where testtable_id='"+num+"'";	
 		  st.executeUpdate(query);
 		 
 	}

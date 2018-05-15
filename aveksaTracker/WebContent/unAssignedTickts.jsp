@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Un Assigned Tickets</title>
+<title>All Assigned Tickets</title>
 
   <style>
 table {
@@ -44,10 +44,10 @@ function assigneTicket(id){
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
 
-     
+    
           <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
-          <h2 class="mb-5" >Below are the  Unassigned Tickets </h2>
+          <h2 class="mb-5" >Below are the assigned Tickets </h2>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
@@ -91,7 +91,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
-	if(status.equalsIgnoreCase("UnAssigned") && assigneed.equalsIgnoreCase("NotAssigned"))
+	if(status.equalsIgnoreCase("Assigned"))
 			{
 		i++;
 	%>
@@ -123,7 +123,7 @@ if(i==0)
 {
 
 %>
- No Un Assigned tickets
+ No  Assigned tickets
  <%
 }
  else

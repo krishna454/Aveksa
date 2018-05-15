@@ -84,7 +84,7 @@ public class ExtractingTickets {
 	//String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,)" + "VALUES(?,?,?,?,?,?)";	
 	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee,"+"Ticket_Type,"+"TicketsExtractedBy)" + "VALUES(?,?,?,?,?,?,?,?,?,?)";	
 			
-			String state="UnAssigned";
+			String state="Assigned";
 			String AFX="No";
 			//String Assignee="NotAssigned";
 			String queDate=dtf.format(now);
@@ -228,7 +228,7 @@ public class ExtractingTickets {
 	               pstmt.setString(6, queDate);
 	               pstmt.setString(7, AFX);
 	               pstmt.setString(8, Assignee[count]);
-	               System.out.println("its while loop");
+	             //  System.out.println("its while loop");
 	               if(name.contains("INC")|| name.contains("TASK"))
 	               {
 	            	   pstmt.setString(9, "Snow"); 
@@ -238,10 +238,10 @@ public class ExtractingTickets {
 	               }
 	               
 	               pstmt.setString(10, userId);
-	               System.out.println("its while loop");
+	             //  System.out.println("its while loop");
 	               pstmt.executeUpdate();
 	              // System.out.println("its while loop 2 "+count);
-	               System.out.println("tickets updated successfully ");
+	            //   System.out.println("tickets updated successfully ");
 	             
 	               count++;
 	             //  System.out.println("present count is "+count);
