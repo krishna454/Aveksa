@@ -7,6 +7,7 @@
 String ide=request.getParameter("Testtable_id");
 int num=Integer.parseInt(ide);
 String Ticket_Id=request.getParameter("Ticket_Id");
+
 String Name=request.getParameter("Name");
 String Form_Type=request.getParameter("Form_Type");
 int formtype=Integer.parseInt(Form_Type);
@@ -40,16 +41,16 @@ int afx=Integer.parseInt(AFX);
 
 String Assignee=request.getParameter("Assignee");
 
-
+String Comments=request.getParameter("Comments");
 String Ticket_Status=request.getParameter("Ticket_Status");
 int ticketStatus=Integer.parseInt(Ticket_Status);
+
+System.out.println("Ticket_Id is "+Ticket_Id+" Assignee is "+Assignee+" ");
 
 //String Completed_Date=request.getParameter("Completed_Date");
 
 UpdateTicket updateTicket=new UpdateTicket();
-updateTicket.updateTickets(num,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx,Assignee, ticketStatus);
-
-System.out.println(AFX);
+updateTicket.updateTickets(num,Comments,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx,Assignee, ticketStatus);
 response.sendRedirect("Homepage.jsp");
 
 %>

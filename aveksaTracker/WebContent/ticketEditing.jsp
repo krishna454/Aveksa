@@ -58,7 +58,7 @@ admin = rs.getString("Admin");
 String id=request.getParameter("id");
 int no=Integer.parseInt(id);
 //out.println(no);
-int sumcount=0;
+//int sumcount=0;
 
 /*	
 Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -89,7 +89,7 @@ else
 
 
 %>
- <td><lable name="Ticket_Id" value="<%=testTable.getTicket_Id()%>"><%=testTable.getTicket_Id()%></lable></td>
+ <td><input type="hidden" name="Ticket_Id" value="<%=testTable.getTicket_Id()%>"><%=testTable.getTicket_Id()%></td>
 <%
 }
 %>
