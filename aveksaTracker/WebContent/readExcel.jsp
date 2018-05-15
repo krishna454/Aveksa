@@ -2,36 +2,50 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-  <%@ page import ="tickets.ExtractingTickets" %>  
+ 
+     <%@ page import ="database.MySQLConnection" %>
+             <%@ page import ="java.sql.Connection" %>
+            <%@ page import ="java.sql.Statement" %>
+            <%@ page import ="java.sql.ResultSet" %>
+          <%String userid=session.getAttribute("userId").toString(); %>
 
  <html>  
  <head>  
  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
- <title>Insert title here</title>  
+ <title>Selecting Employees</title>  
  </head>  
  <body>  
- <!--<jsp:useBean id="connection" class="database.MySQLConnection" scope="page">  
-   <jsp:setProperty name="connection" property="*"/>  
- </jsp:useBean>   -->
- <!--  
- <form action="selectUsers.jsp">
-  <input type="checkbox" name="assigning" value="Ram">Ram<br>
-  <input type="checkbox" name="assigning" value="Saurabh" >Saurabh<br>
-   <input type="checkbox" name="assigning" value="Vijay">Vijay<br>
-  <input type="checkbox" name="assigning" value="Namrata" >Namrata<br>
-  <input type="checkbox" name="assigning" value="Arun" >Arun<br>
-  <input type="submit" value="Submit">
-</form>-->
-<% 
-
-ExtractingTickets extractingTickets= new ExtractingTickets();
- extractingTickets.inserDataFromExceltotable();
  
-extractingTickets.extractTicket();
+ <form action="assignTicketsAuto.jsp" method="post" color="blue">
+ <h3>Please select Today working Employees from the below list </h3>
+ <table>
+<%
 
- %>
-<h1> Tickets extracted succesfully Please check in Un-assigned tickets tab</h1>
- <a href="unAssignedTickts.jsp" >click me to show Un Assigned Tickets</a>
- 
+MySQLConnection MySQLConnection=new MySQLConnection();
+
+Connection con=MySQLConnection.getCon();
+try {
+Statement st = (Statement) con.createStatement();
+// System.out.println("creating statement");
+ResultSet rs =  st.executeQuery("select userName from userdetails");
+while(rs.next()){
+	%>
+	
+	<input type="checkbox" name="assignee" value="<%=rs.getString("userName") %>"><%=rs.getString("userName") %></input><br>
+	<%
+	
+}
+rs.close();
+st.close();
+con.close();
+MySQLConnection=null;
+}catch(Exception e)
+{}
+
+
+%>
+<input type="submit" value="Assign tickets"/></table>
+</form>
+
  </body>  
  </html>  

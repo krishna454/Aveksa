@@ -65,12 +65,11 @@ public class ExtractingTickets {
 	
 	//compare data from two table and store in the main dump
 	//public static void main(String args[]) throws SQLException{
-	public void extractTicket() throws SQLException  {
+	public String extractTicket(String lists[],String userId) throws SQLException  {
 		// TODO Auto-generated method stub
 		
-	
-				
-		
+	String update;
+		String list[]=lists;
 		//differenciation of data from two tables
 		
 		
@@ -83,11 +82,11 @@ public class ExtractingTickets {
 	String extract="select * from aveksaticketextract where name not in(select name from  testtable)";
 	
 	//String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,)" + "VALUES(?,?,?,?,?,?)";	
-	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee,"+"Ticket_Type)" + "VALUES(?,?,?,?,?,?,?,?,?)";	
+	String updateDataIntoTable="insert into testtable("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Ticket_Status,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee,"+"Ticket_Type,"+"TicketsExtractedBy)" + "VALUES(?,?,?,?,?,?,?,?,?,?)";	
 			
 			String state="UnAssigned";
 			String AFX="No";
-			String Assignee="NotAssigned";
+			//String Assignee="NotAssigned";
 			String queDate=dtf.format(now);
 			
 			
@@ -103,13 +102,83 @@ public class ExtractingTickets {
 		        
 		        Statement st = (Statement) connection.createStatement();
 		      
+		        //Getting the row number
+		        
 		        ResultSet rs2 =  st.executeQuery("select * from testtable");
 		       // System.out.println("executed required "+rs2);
+		    
+		        
+		        
 		        int testtable_id=0;
 		        while(rs2.next())
 		        {
 		        	testtable_id=rs2.getInt(1);
 		        }
+		      
+		        
+		        //getting the new tickets count
+		        
+		        ResultSet rs3 = st.executeQuery(extract);
+		        rs3.last();
+		        int range = rs3.getRow();
+		        rs3.beforeFirst();
+		        
+		      //  System.out.println("the new tickets count is "+range);
+		        
+		        
+		        //selecting working users
+		        
+		     String  Assignee[]=new String[range]; 
+		        
+		        
+		     
+		     if(range==0)
+	          { 
+		    	// System.out.println("no new tickets");
+		    	 update=" We dont have any new tickets ";
+		    	 
+	          }
+	          else {
+	          if(list.length>range)
+	           {
+	        	//  System.out.println("tickets is veryless");
+	        	  for(int i=0;i<range;i++)
+	           
+       	       {
+       		         		  
+	        		  Assignee[i]=list[i];
+       		   }
+	           }
+	           else
+	           {
+	        	//   System.out.println("tickets count was good");
+	        	   int j=0;
+	        	   for(int i=0;i<range;i++)
+	        	   {
+	        		   if(list.length>i)
+	        		   {
+	        			   Assignee[i]=list[i];
+	        		   j=list.length;
+	        		   }
+	        		   else
+	        		   {
+	        			   Assignee[i]=Assignee[i-j];
+	        			   
+	        		   }
+	        	   }
+	        	   
+	           }
+	          
+	          
+	        
+		     
+		     
+		     
+		     
+		     
+		     
+		     
+		        
 		        
 		        
 		       // System.out.println("last number"+testtable_id);
@@ -124,10 +193,13 @@ public class ExtractingTickets {
 	             
 	             ResultSet rs = st.executeQuery(extract);
 	             
-	           
+	           try {
+	        	   int count=0;
 	           
 	           //  System.out.println("resultset");
 	             while (rs.next()) {
+	            	 
+	            	 
 	            	 testtable_id=testtable_id+1; 
 	               String name = rs.getString(1);
 	              String rdate = rs.getString(2);
@@ -155,8 +227,8 @@ public class ExtractingTickets {
 	               pstmt.setString(5, rdate);
 	               pstmt.setString(6, queDate);
 	               pstmt.setString(7, AFX);
-	               pstmt.setString(8, Assignee);
-	               
+	               pstmt.setString(8, Assignee[count]);
+	               System.out.println("its while loop");
 	               if(name.contains("INC")|| name.contains("TASK"))
 	               {
 	            	   pstmt.setString(9, "Snow"); 
@@ -164,10 +236,15 @@ public class ExtractingTickets {
 	               else {
 	            	   pstmt.setString(9, "Aveksa");
 	               }
+	               
+	               pstmt.setString(10, userId);
+	               System.out.println("its while loop");
 	               pstmt.executeUpdate();
-	              // System.out.println("tickets updated successfully ");
+	              // System.out.println("its while loop 2 "+count);
+	               System.out.println("tickets updated successfully ");
 	             
-	              
+	               count++;
+	             //  System.out.println("present count is "+count);
 	             }
 	             rs.close();
 	             rs2.close();
@@ -177,9 +254,18 @@ public class ExtractingTickets {
 	            connection.close();
 	            db=null;
 	            System.gc();
-	             
+	            
+	            
+	            update=" we have "+range+" tickets assigned to selected employees";
 	           }
-	         
- 
+	           catch(Exception e)
+	           {
+	        	   
+	        	   e.printStackTrace();
+	             update="Something went wrong";
+	           }
+	          }
+ return update;
 }
+	}
 
