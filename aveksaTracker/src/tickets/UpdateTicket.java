@@ -24,7 +24,7 @@ import pojo.TestTablePojo;
 		{
 		
 	
-		String Form_type1=null,Ticket_type1=null,Ticket_Category1=null,Location1=null,Ticket_Status1=null,AFX1=null,Assigned=null;
+		String Form_type1=null,Ticket_type1=null,Ticket_Category1=null,Location1=null,Ticket_Status1=null,AFX1=null;
 		
 		
 		MySQLConnection DBConnection=new MySQLConnection();
@@ -42,7 +42,7 @@ import pojo.TestTablePojo;
 			 Location1=rs.getString("Location");
 			 Ticket_Status1=rs.getString("Ticket_Status");
 			 AFX1=rs.getString("AFX");
-			 Assigned=rs.getString("Assignee");
+		
 		
 			 
 			
@@ -89,14 +89,14 @@ import pojo.TestTablePojo;
 			
 			//System.out.println("id in update class is "+num);
 		//	TestTableData testTableData=new TestTableData();
-			String queryDate="update testtable set Comments='"+Comments+"', Completed_Date='"+Completed_Date+"', Ticket_Id='"+Ticket_Id+"', Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'";	
+	
 		String query="update testtable set Comments='"+Comments+"',Ticket_Id='"+Ticket_Id+"', Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'";	
 				 if(getAFX.equalsIgnoreCase("yes"))
 				 {
 					getAssignee="Dileep";
 					getTicket_Status="Completed";
 			            	
-			            	  st.executeUpdate(queryDate);
+			            	  st.executeUpdate("update testtable set Comments='"+Comments+"', Completed_Date='"+Completed_Date+"', Ticket_Id='"+Ticket_Id+"', Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'");
 			         
 			           
 				 }
@@ -104,7 +104,7 @@ import pojo.TestTablePojo;
 				 else  if(getTicket_Status.equals("Completed"))
                          {
             	
-            	  st.executeUpdate(queryDate);
+            	  st.executeUpdate("update testtable set Comments='"+Comments+"', Completed_Date='"+Completed_Date+"', Ticket_Id='"+Ticket_Id+"', Form_Type='"+getForm_type+"',No_of_Users='"+no_of_Users+"',No_of_Targets='"+no_of_Targets+"',Provisioning_Events='"+no_of_Events+"',Ticket_Type='"+getTicket_type+"',Ticket_Category='"+getTicket_Category+"',Department='"+Department+"',Location='"+getLocation+"',Company_Name='"+Company_Name+"',AFX='"+getAFX+"',Assignee='"+getAssignee+"',Ticket_Status='"+getTicket_Status+"'  where testtable_id='"+num+"'");
                           }
                   else {
                         st.executeUpdate(query);
