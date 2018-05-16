@@ -42,7 +42,7 @@ public class ExtractingTickets {
 			 
 			 
 		   cellStoreArrayList=(ArrayList)dataHolder.get(i);  
-		   
+		 
 		     ps.setString(1,(cellStoreArrayList.get(0)).toString());  
 		     ps.setString(2,(cellStoreArrayList.get(1)).toString());  
 		    
@@ -207,6 +207,19 @@ public class ExtractingTickets {
 	              pstmt.setInt(1,testtable_id);     
 	              if(name.contains("-"))
 	              {
+	            	  if(name.contains("Attribute"))
+	            	  {
+	            		  String [] arrOfStr = name.split("-", 2);
+	           	       
+	    	              for (String a : arrOfStr)
+	    	                  //System.out.println(a);
+	    	              
+	    	              //System.out.println(name+" "+rdate);
+	    	               
+	    	               pstmt.setString(2, arrOfStr[0]);
+	    	              arrOfStr=null;
+	            	  }
+	            	  else {
 	              String [] arrOfStr = name.split("-", 2);
 	       
 	              for (String a : arrOfStr)
@@ -216,6 +229,7 @@ public class ExtractingTickets {
 	               
 	               pstmt.setString(2, arrOfStr[1]);
 	              arrOfStr=null;
+	            	  }
 	              }
 	               else 
 	               {
