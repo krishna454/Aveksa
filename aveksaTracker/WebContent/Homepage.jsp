@@ -52,13 +52,13 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 2px solid #d87229;
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #d87229;
 }
 </style>
   
@@ -88,12 +88,12 @@ tr:nth-child(even) {
 
   </head>
 
-  <body id="page-top">
+  <body  id="page-top"  style="background-color:#daddd7;">
   
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Start Bootstrap</span>
+        <span class="d-block d-lg-none"></span>
         <span class="d-none d-lg-block">
           <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile.png" alt="">
         </span>
@@ -288,7 +288,7 @@ tr:nth-child(even) {
               <h3 class="mb-0">
               
               
-              <a href="aveksaTicketsDump.jsp" >click me<img src="img/download.jpg" height="35px" width="33px" alt="Mountain View"> to pull aveksa tickets Dump</a>
+              <a href="aveksaTicketsDump.jsp" >click me&nbsp<img src="img/download.jpg" height="23px" width="28px" alt="Mountain View"> to pull aveksa tickets Dump</a>
           
           <!-- finding a ticket -->
           

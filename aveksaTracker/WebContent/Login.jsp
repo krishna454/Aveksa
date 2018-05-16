@@ -6,9 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Aveksa Tracker</title>
+<script>
 
+
+</script>
 </head>
-<body>
+<body style="background-color:#daddd7;">
 <center>
 <h1>Welcome to Aveksa Tracker</h1>
 </center>
