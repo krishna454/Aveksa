@@ -47,7 +47,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
-	if( assigneed.equalsIgnoreCase(userName)  && status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("On-Hold")||status.equalsIgnoreCase("Awaiting User confirmation"))
+	if( assigneed.equalsIgnoreCase(userName)  && status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold"))
 			{
 	%>
 	
@@ -80,7 +80,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 			}
 	
-	else if(admin.equalsIgnoreCase("yes") && status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("On-Hold")||status.equalsIgnoreCase("Awaiting User confirmation"))
+	else if(admin.equalsIgnoreCase("yes") &&  status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold"))
 	{
 		%>
 		

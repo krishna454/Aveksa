@@ -95,7 +95,7 @@ tr:nth-child(even) {
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-block d-lg-none">Start Bootstrap</span>
         <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile.jpg" alt="">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile.png" alt="">
         </span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -288,7 +288,7 @@ tr:nth-child(even) {
               <h3 class="mb-0">
               
               
-              <a href="aveksaTicketsDump.jsp" >click me<img src="img/download.jpg" height="85px" width="53px" alt="Mountain View"> to pull aveksa tickets Dump</a>
+              <a href="aveksaTicketsDump.jsp" >click me<img src="img/download.jpg" height="35px" width="33px" alt="Mountain View"> to pull aveksa tickets Dump</a>
           
           <!-- finding a ticket -->
           

@@ -76,7 +76,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	<%
 	
 			}
-else if(status.equalsIgnoreCase("inprogress") && admin.equalsIgnoreCase("yes"))
+else if(status.equalsIgnoreCase("Assigned") && admin.equalsIgnoreCase("yes"))
 
 {
 %>

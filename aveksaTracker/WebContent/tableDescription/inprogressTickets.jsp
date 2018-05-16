@@ -46,8 +46,8 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
-	
-	if(status.equalsIgnoreCase("inprogress") && assigneed.equalsIgnoreCase(userName) )
+//	System.out.println(status+" and the user name is "+userName);
+	if(status.equalsIgnoreCase("Inprogress") && assigneed.equalsIgnoreCase(userName) )
 			{
 	%>
 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
@@ -76,7 +76,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	<%
 	
 			}
-else if(status.equalsIgnoreCase("inprogress") && admin.equalsIgnoreCase("yes"))
+else if(status.equalsIgnoreCase("Inprogress") && admin.equalsIgnoreCase("yes"))
 
 {
 %>
