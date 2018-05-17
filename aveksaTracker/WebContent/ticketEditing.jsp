@@ -8,8 +8,7 @@
           <%@ page import ="tickets.EditingTickets" %>
             <%@ page import="pojo.TestTablePojo" %>
             
-              
-            <% %> 
+       <body style="background-color:#daddd7;">
 <form method="post" action="updateTicket.jsp">
 <table border="1">
  <tr>
@@ -304,4 +303,4 @@ catch(Exception e)
 
 %>
 </table>
-</form>
+</form></body>

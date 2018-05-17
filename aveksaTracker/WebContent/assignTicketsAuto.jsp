@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Assigning Tickets</title>
 </head>
-<body>
+<body style="background-color:#daddd7;">
 <% 
 try{
 	String userid=session.getAttribute("userId").toString();

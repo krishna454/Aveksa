@@ -17,7 +17,7 @@
   
   %>
 </head>
-<body>
+<body style="background-color:#daddd7;">
 <form name="Employee"  method="get" action="AddUser" >
 
 <table>

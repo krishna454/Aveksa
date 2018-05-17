@@ -8,6 +8,9 @@
           <%@ page import ="tickets.EditingTickets" %>
             <%@ page import="pojo.TestTablePojo" %>
             
+ <body style="background-color:#daddd7;">   
+    
+    
             <% try {
             	String userid=session.getAttribute("userId").toString(); %>
 <form method="post" action="updateUnAssingedTicket.jsp">
@@ -70,4 +73,4 @@ catch(Exception e){
 }
 %>
 </table>
-</form>
+</form></body>

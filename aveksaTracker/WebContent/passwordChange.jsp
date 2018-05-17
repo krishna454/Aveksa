@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>change password</title>
 </head>
-<body>
+<body style="background-color:#daddd7;">
 <form name="changePass" action="ChangePassword" method="get">
 
 

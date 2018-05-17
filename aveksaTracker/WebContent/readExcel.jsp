@@ -14,7 +14,7 @@
  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">  
  <title>Selecting Employees</title>  
  </head>  
- <body>  
+ <body style="background-color:#daddd7;">  
  
  <form action="assignTicketsAuto.jsp" method="post" color="blue">
  <h3>Please select Today working Employees from the below list </h3>

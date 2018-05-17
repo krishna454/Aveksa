@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Success</title>
 </head>
-<body>
+<body style="background-color:#daddd7;">
 <h2>Your password has been changed successfully</h2>
 <a href='Login.jsp'>Go to Login Page</a>
 </body>

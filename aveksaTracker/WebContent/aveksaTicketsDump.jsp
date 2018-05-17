@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ page import ="excel.CreatingExcelFile" %>
 <title>Insert title here</title>
-</head>
+</head style="background-color:#daddd7;">
 <body>
   <%
   try{

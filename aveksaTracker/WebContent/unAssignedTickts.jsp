@@ -33,13 +33,13 @@ function assigneTicket(id){
     f.submit();
 }
 </script>
-
+ <body style="background-color:#daddd7;">   
 <%
 
 //String userName=request.getParameter("userName");
 %>
 </head>
-<body>
+
   <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
