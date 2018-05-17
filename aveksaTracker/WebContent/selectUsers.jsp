@@ -8,16 +8,22 @@
 </head>
 <body>
 <%@ page import ="tickets.ExtractingTickets" %> 
-
+  <% %>
 <center> 
 
-<% 
+<% try{
+String userid=session.getAttribute("userId").toString();
 String[] assigning = request.getParameterValues("assigning");
  
  //ExtractingTickets extractingTickets= new ExtractingTickets();
 //extractingTickets.inserDataFromExceltotable();
 //extractingTickets.extractTicket(assigning);
-
+}
+catch(Exception e)
+{
+	e.printStackTrace();
+	response.sendRedirect("Login.jsp");
+}
  %>
 <h1> Tickets extracted succesfully Please check in Un-assigned tickets tab</h1>
  <a href="Homepage.jsp" >click me to Home for Un Assigned Tickets</a>

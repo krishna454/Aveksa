@@ -7,6 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+  <%
+  try{
+  String userid=session.getAttribute("userId").toString();
+  }
+  catch(Exception e)
+  {
+	  response.sendRedirect("Login.jsp");
+  }
+  
+  %>
 <h2>Successfully Added new Employee</h2>
 <a href="Homepage.jsp">Click here to go Home</a>
 </body>

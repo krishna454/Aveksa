@@ -8,13 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<%
+  <%
+  try{
+	String userid=session.getAttribute("userId").toString();
 
 String query="Select * from testtable";
 
 CreatingExcelFile creatingExcelFile=new CreatingExcelFile();
 creatingExcelFile.createAveksaTicketsDump(query);
+}
+catch(Exception e)
+{
+	  response.sendRedirect("Login.jsp");
+}
 
 
 %>

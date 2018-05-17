@@ -9,7 +9,7 @@
             <%@ page import="pojo.TestTablePojo" %>
             
               
-            <%String userid=session.getAttribute("userId").toString(); %> 
+            <% %> 
 <form method="post" action="updateTicket.jsp">
 <table border="1">
  <tr>
@@ -40,6 +40,7 @@
   </tr> 
 <%
 try {
+	String userid=session.getAttribute("userId").toString();
 String admin=null;
 String userName=null;
 MySQLConnection MySQLConnection=new MySQLConnection();
@@ -298,6 +299,7 @@ MySQLConnection=null;
 
 catch(Exception e)
 {
+	response.sendRedirect("Login.jsp");
 }
 
 %>

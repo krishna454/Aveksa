@@ -8,7 +8,8 @@
           <%@ page import ="tickets.EditingTickets" %>
             <%@ page import="pojo.TestTablePojo" %>
             
-          
+            <% try {
+            	String userid=session.getAttribute("userId").toString(); %>
 <form method="post" action="updateUnAssingedTicket.jsp">
 <table border="1">
  <tr>
@@ -26,7 +27,7 @@ String id=request.getParameter("id");
 int no=Integer.parseInt(id);
 //out.println(no);
 int sumcount=0;
-try {
+
 /*	
 Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");*/
@@ -62,7 +63,11 @@ for(TestTablePojo testTable : TestTablelist) {
 <%
 }
 }
-catch(Exception e){}
+catch(Exception e){
+	e.printStackTrace();
+	response.sendRedirect("Login.jsp");
+	
+}
 %>
 </table>
 </form>

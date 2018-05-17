@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+      <%%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page import="java.sql.*"%>
 <%@ page import="tickets.UpdateTicket" %>
 <%
+
+try
+{
+	String userid=session.getAttribute("userId").toString(); 
+
 String ide=request.getParameter("Testtable_id");
 int num=Integer.parseInt(ide);
 String Ticket_Id=request.getParameter("Ticket_Id");
@@ -53,4 +60,11 @@ UpdateTicket updateTicket=new UpdateTicket();
 updateTicket.updateTickets(num,Comments,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx,Assignee, ticketStatus);
 response.sendRedirect("Homepage.jsp");
 
+
+}
+catch(Exception e)
+{
+	e.printStackTrace();
+	response.sendRedirect("Login.jsp");
+}
 %>

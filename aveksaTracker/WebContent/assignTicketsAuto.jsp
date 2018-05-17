@@ -6,7 +6,7 @@
              <%@ page import ="java.sql.Connection" %>
             <%@ page import ="java.sql.Statement" %>
             <%@ page import ="java.sql.ResultSet" %>
-            <%String userid=session.getAttribute("userId").toString(); %> 
+           
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +15,8 @@
 </head>
 <body>
 <% 
+try{
+	String userid=session.getAttribute("userId").toString();
 String list[]=request.getParameterValues("assignee");
 
 ExtractingTickets extractingTickets= new ExtractingTickets();
@@ -26,6 +28,14 @@ String update=extractingTickets.extractTicket(list,userid);
  %>
 <h1> <%=update %></h1>
  <a href="Homepage.jsp" >click me to go Home</a>
+ <%
+}
+catch(Exception e)
+{
+	  response.sendRedirect("Login.jsp");
+}
+
  
+ %>
 </body>
 </html>

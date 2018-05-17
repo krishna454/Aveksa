@@ -5,6 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+  <%
+  try{
+  String userid=session.getAttribute("userId").toString();
+  }
+  catch(Exception e)
+  {
+	  response.sendRedirect("Login.jsp");
+  }
+ 
+  
+  %>
 </head>
 <body>
 <form name="Employee"  method="get" action="AddUser" >

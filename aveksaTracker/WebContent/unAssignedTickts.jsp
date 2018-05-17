@@ -82,8 +82,9 @@ function assigneTicket(id){
      -->
   </tr> 
  
-  
-<%
+   <% try {
+            	String userid=session.getAttribute("userId").toString(); 
+
 int i=0;
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
@@ -96,8 +97,9 @@ for(TestTablePojo testTable : TestTablelist) {
 		i++;
 	%>
 
+
 	<tr>
-	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="assigneTicket(<%=testTable.getTesttable_id()%>);" ></td>
+	<td><input type="button" name="edit" value="Edit" style="background-color:green;  font-weight:bold;color:white;" onclick="assigneTicket(<%=testTable.getTesttable_id()%>);" ></td>
 	<td><%= testTable.getTesttable_id() %></td>
     <td><%=testTable.getTicket_Id() %></td>
     <td><%=testTable.getName()%></td>
@@ -133,6 +135,13 @@ if(i==0)
  <%
 	 
  }
+   }
+   catch(Exception e)
+   {
+		e.printStackTrace();
+		response.sendRedirect("Login.jsp");
+	   
+   }
  %>
 
 

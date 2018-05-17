@@ -7,7 +7,7 @@
              <%@ page import ="java.sql.Connection" %>
             <%@ page import ="java.sql.Statement" %>
             <%@ page import ="java.sql.ResultSet" %>
-          <%String userid=session.getAttribute("userId").toString(); %>
+         
 
  <html>  
  <head>  
@@ -20,11 +20,12 @@
  <h3>Please select Today working Employees from the below list </h3>
  <table>
 <%
-
+try {
+	String userid=session.getAttribute("userId").toString();
 MySQLConnection MySQLConnection=new MySQLConnection();
 
 Connection con=MySQLConnection.getCon();
-try {
+
 Statement st = (Statement) con.createStatement();
 // System.out.println("creating statement");
 ResultSet rs =  st.executeQuery("select userName from userdetails");
@@ -40,7 +41,11 @@ st.close();
 con.close();
 MySQLConnection=null;
 }catch(Exception e)
-{}
+{
+	
+e.printStackTrace();
+response.sendRedirect("Login.jsp");
+}
 
 
 %>

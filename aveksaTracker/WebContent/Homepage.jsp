@@ -58,7 +58,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #d87229;
+    background-color: #daddd7;
 }
 </style>
   
@@ -116,14 +116,14 @@ tr:nth-child(even) {
       
       
       
-   <%
+   <%try {
    String userid=session.getAttribute("userId").toString(); 
    String userName=null;
    String admin=null;
     		MySQLConnection MySQLConnection=new MySQLConnection();
 
     		Connection con=MySQLConnection.getCon();
-    		try {
+    		
     		Statement st = (Statement) con.createStatement();
     		// System.out.println("creating statement");
     		ResultSet rs =  st.executeQuery("select * from userdetails where userid='"+userid+"' ");
@@ -272,12 +272,12 @@ tr:nth-child(even) {
   
        
    
-      <h3 class="mb-0">Welcome 
+    <!--    <h3 class="mb-0">Welcome 
             <span class="text-primary"><%
             out.print(userName); 
             %></span>
             
-          </h3>
+          </h3>-->
        
     
 
@@ -288,7 +288,7 @@ tr:nth-child(even) {
               <h3 class="mb-0">
               
               
-              <a href="aveksaTicketsDump.jsp" >click me&nbsp<img src="img/download.jpg" height="23px" width="28px" alt="Mountain View"> to pull aveksa tickets Dump</a>
+              <a href="aveksaTicketsDump.jsp" >click me&nbsp&nbsp<img src="img/download.jpg" height="25px" width="28px" alt="Mountain View">&nbsp&nbsp to pull aveksa tickets Dump</a>
           
           <!-- finding a ticket -->
           
@@ -410,7 +410,7 @@ tr:nth-child(even) {
   }
   catch(Exception e)
   {
-  	e.printStackTrace();
+	  response.sendRedirect("Login.jsp");
   }
  
   
