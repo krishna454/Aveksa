@@ -61,6 +61,9 @@ tr:nth-child(even) {
 <%
 try {
 	String userid=session.getAttribute("userId").toString();
+	
+String ticketId=request.getParameter("search");
+System.out.println("its came to search "+ticketId);
 String admin=null;
 String userName=null;
 MySQLConnection MySQLConnection=new MySQLConnection();
@@ -78,8 +81,7 @@ admin = rs.getString("Admin");
 }
 
 
-String id=request.getParameter("id");
-int no=Integer.parseInt(id);
+
 //out.println(no);
 //int sumcount=0;
 
@@ -88,9 +90,11 @@ Class.forName("com.mysql.jdbc.Driver").newInstance();
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");*/
 
 EditingTickets editingTickets=new EditingTickets();
-ArrayList<TestTablePojo> TestTablelist = editingTickets.editTicket(no);
+System.out.println("its came to search1");
+ArrayList<TestTablePojo> TestTablelist = editingTickets.searchTicket(ticketId);
 
 for(TestTablePojo testTable : TestTablelist) {
+	
 %>
 <tr>
 
@@ -230,6 +234,8 @@ else
                <option value = "11">16-Hampshire</option>
                <option value = "12">17-Frederick</option>
                <option value = "13">18-East Station</option>
+           
+           <%System.out.println("its came to search2"); %>
                <option value = "14">19-LaPlata</option>
                <option value = "15">24-1100 H Street</option>
                <option value = "16">400-WGEServices HQ</option>
@@ -343,9 +349,16 @@ MySQLConnection=null;
 
 catch(Exception e)
 {
+	
+	e.printStackTrace();
 	response.sendRedirect("Login.jsp");
 }
 
 %>
+
+
 </table>
-</form></body>
+</form>
+<br><br>
+<a href="Homepage.jsp" >click me to go Home</a>
+</body>

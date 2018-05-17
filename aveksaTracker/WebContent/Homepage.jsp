@@ -35,6 +35,9 @@ function unassignedform(id){
     f.method="post";
     f.action='ticketEditing.jsp?id='+id;
     f.submit();
+    
+    
+    getTicketDetails
 	
 }
 </script>
@@ -294,9 +297,9 @@ tr:nth-child(even) {
           
         
           
-          <form id= class="example" action="action_page.php">
-          <input type="text" placeholder="Search a ticket" name="search">
-          <button type="button" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
+          <form id= class="example" action="searchPage.jsp">
+          <input type="text" placeholder="Search a ticket" name="search" required>
+          <button type="submit" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
            </form>
    
           

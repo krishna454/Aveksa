@@ -20,7 +20,7 @@ import pojo.TestTablePojo;
 
 //updating the data  on table
 
-	synchronized public void updateTickets(int num,String Comments,String Ticket_Id, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,String Assignee,int Ticket_Status) throws SQLException
+	public void updateTickets(int num,String Comments,String Ticket_Id, int no_of_Users,int no_of_Targets,int no_of_Events,   int Form_Type, int Ticket_Type,int Ticket_Category,String Department, int Location,String Company_Name,int AFX,String Assignee,int Ticket_Status) throws SQLException
 		{
 		
 	
@@ -124,7 +124,7 @@ import pojo.TestTablePojo;
 		}
 	
 	
-	synchronized public void updateUnAssignedTickets(int num,String Assignee,String exctractedBy) throws SQLException
+	public void updateUnAssignedTickets(int num,String Assignee,String exctractedBy) throws SQLException
 	{
 		
 	//String for getting values from database
