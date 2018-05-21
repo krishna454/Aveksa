@@ -238,7 +238,17 @@ tr:nth-child(even) {
           
            <%
 		}
+         else
+         {
          %>
+         	
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#allMyTickets">All My Tickets</a>
+          </li>
+           <%
+         }
+           %>
+         
            <li class="nav-item">
            
             <li class="nav-item">
@@ -404,6 +414,18 @@ tr:nth-child(even) {
 </h3>
   </form></div></div></div></section>
 
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="allMyTickets">
+       <div class="my-auto">  
+          <h2 class="mb-5">All Tickets</h2>
+        <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">
+           
+      <form method="post" name="CompletedForm">
+<jsp:include page="/tableDescription/allMyTickets.jsp" />
+</h3>
+  </form></div></div></div></section>
 
   <%
   st.close();

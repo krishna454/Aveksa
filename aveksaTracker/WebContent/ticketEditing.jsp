@@ -304,7 +304,7 @@ else
     
     %>    
    
-   <label name="Assignee" value="<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%></label>
+   <input type="hidden" name="Assignee" value="<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%>
   <%
   
     }
