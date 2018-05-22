@@ -89,12 +89,15 @@ int i=0;
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 for(TestTablePojo testTable : TestTablelist) {
-	
+	//System.out.println("error getting in unAssignedTickets.jsp  after for loop");
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
+
 	if(status.equalsIgnoreCase("Assigned"))
 			{
 		i++;
+		
+		
 	%>
 
 
@@ -139,7 +142,8 @@ if(i==0)
    catch(Exception e)
    {
 		e.printStackTrace();
-		response.sendRedirect("Login.jsp");
+		//System.out.println("error getting in unAssignedTickets.jsp "+e);
+		response.sendRedirect("noAssignedTickets.jsp");
 	   
    }
  %>

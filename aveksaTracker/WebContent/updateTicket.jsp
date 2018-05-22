@@ -59,7 +59,7 @@ System.out.println("Ticket_Id is "+Ticket_Id+" Assignee is "+Assignee+" ");
 //String Completed_Date=request.getParameter("Completed_Date");
 
 UpdateTicket updateTicket=new UpdateTicket();
-updateTicket.updateTickets(num,Comments,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx,Assignee, ticketStatus);
+updateTicket.updateTickets(num,userid,Comments,Ticket_Id,no_of_Users,no_of_Targets,no_of_Events,formtype,tickettype,ticketCategory,Department,location,Company_Name,afx,Assignee, ticketStatus);
 response.sendRedirect("Homepage.jsp");
 
 

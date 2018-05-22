@@ -64,11 +64,7 @@ userName=rs.getString("userName");
 st.close();
 con.close();
 MySQLConnection=null;
-}
-catch(Exception e)
-{
-	
-}
+
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 for(TestTablePojo testTable : TestTablelist) {
@@ -107,6 +103,11 @@ for(TestTablePojo testTable : TestTablelist) {
   
     }
 
+}
+}
+catch(Exception e)
+{
+	
 }
 %>
 

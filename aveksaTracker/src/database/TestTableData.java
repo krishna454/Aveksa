@@ -45,6 +45,8 @@ public class TestTableData {
 	        	TestTablePojo.setCompleted_Date(rs.getString("Completed_Date"));
 	        	TestTablePojo.setTicket_Status(rs.getString("Ticket_Status"));
 	        	TestTablePojo.setComments(rs.getString("Comments"));
+	        	TestTablePojo.setTicketsUpdatedBy(rs.getString("TicketsUpdatedBy"));
+	        	TestTablePojo.setTicketsExtractedBy(rs.getString("TicketsExtractedBy"));
 	        	TestTablelist.add(TestTablePojo);
 	        	
 	        	        }

@@ -35,11 +35,7 @@ userName=rs.getString("userName");
 st.close();
 con.close();
 MySQLConnection=null;
-}
-catch(Exception e)
-{
-	
-}
+
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 for(TestTablePojo testTable : TestTablelist) {
@@ -76,7 +72,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	<%
 	
 			}
-else if(status.equalsIgnoreCase("Inprogress") && admin.equalsIgnoreCase("yes"))
+else if((status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold")) && admin.equalsIgnoreCase("yes"))
 
 {
 %>
@@ -106,6 +102,10 @@ else if(status.equalsIgnoreCase("Inprogress") && admin.equalsIgnoreCase("yes"))
 <%
 
 }
+}}
+catch(Exception e)
+{
+	//System.out.println("we are getting error on awaiting user page "+e);
 }
 %>
 </table>

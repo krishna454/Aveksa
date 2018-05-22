@@ -185,7 +185,7 @@ tr:nth-child(even) {
           </li>
           
           
-         <%  if(admin.equalsIgnoreCase("yes") && userName.equalsIgnoreCase("gladys"))
+         <%  if(admin.equalsIgnoreCase("yes"))
         
 		{
 		%>
@@ -203,6 +203,10 @@ tr:nth-child(even) {
 	<%
 		}
 	%>
+	
+	 <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="TicketsExtractedBy.jsp">Tickets Extracted By</a>
+          </li>
 	
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">All  Tickets</a>
@@ -312,19 +316,19 @@ tr:nth-child(even) {
           <button type="submit" onclick="getTicketDetails()" ><i class="fa fa-search"></i></button>
            </form>
    
-          
+         
     <!-- showing All Avkes Tickets -->      
-          All Tickets
+        <!--     All Tickets-->
           
           
           
           
-    <form method="post" name="form">
+ <form method="post" name="form">
     
-    <jsp:include page="/tableDescription/allTickets.jsp" />
+<!-- here removed all tickets data if we want we can add again /tableDescription/allTickets.jsp  -->
 </form>
          </h3></div>
-        </div></div>
+        </div></div>   
        
       </section> 
        
@@ -402,6 +406,11 @@ tr:nth-child(even) {
 
 <!-- Completed Tickets  -->
 
+
+<%  if(admin.equalsIgnoreCase("yes"))
+        
+		{
+		%>
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
        <div class="my-auto">  
           <h2 class="mb-5">Completed tickets</h2>
@@ -414,10 +423,12 @@ tr:nth-child(even) {
 </h3>
   </form></div></div></div></section>
 
-
+<%
+		}
+%>
 <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="allMyTickets">
        <div class="my-auto">  
-          <h2 class="mb-5">All Tickets</h2>
+          <h2 class="mb-5">All My Tickets</h2>
         <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
               <h3 class="mb-0">
@@ -435,6 +446,8 @@ tr:nth-child(even) {
   }
   catch(Exception e)
   {
+	  
+	  e.printStackTrace();
 	  response.sendRedirect("Login.jsp");
   }
  

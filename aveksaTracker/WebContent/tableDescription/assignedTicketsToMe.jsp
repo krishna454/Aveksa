@@ -35,11 +35,7 @@ userName=rs.getString("userName");
 st.close();
 con.close();
 MySQLConnection=null;
-}
-catch(Exception e)
-{
-	
-}
+
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 for(TestTablePojo testTable : TestTablelist) {
@@ -106,6 +102,10 @@ else if(status.equalsIgnoreCase("Assigned") && admin.equalsIgnoreCase("yes"))
 <%
 
 }
+}}
+catch(Exception e)
+{
+	
 }
 %>
 </table>

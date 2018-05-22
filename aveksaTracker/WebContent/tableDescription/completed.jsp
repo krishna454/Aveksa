@@ -16,7 +16,7 @@
 <jsp:include page="/tableDescription/tableHead.jsp" />
   
 <%
-
+try{
 
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
@@ -60,7 +60,11 @@ for(TestTablePojo testTable : TestTablelist) {
 	<%
 		}}
     
- 
+}
+catch(Exception e)
+{
+	
+}
 %>
 </table>
 

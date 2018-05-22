@@ -35,11 +35,8 @@ userName=rs.getString("userName");
 st.close();
 con.close();
 MySQLConnection=null;
-}
-catch(Exception e)
-{
-	
-}
+
+
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
 for(TestTablePojo testTable : TestTablelist) {
@@ -104,8 +101,13 @@ else if(status.equalsIgnoreCase("Inprogress") && admin.equalsIgnoreCase("yes"))
 </tr>
 
 <%
+}
 
 }
+}
+catch(Exception e)
+{
+	//System.out.println("we are getting this error in inprogress tickets jsp "+e);
 }
 %>
 </table>

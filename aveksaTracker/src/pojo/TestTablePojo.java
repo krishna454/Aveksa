@@ -8,7 +8,7 @@ public class TestTablePojo {
 	
 	private int testtable_id,No_of_Users,No_of_Targets,Provisioning_Events;
 	private String Ticket_Id,Name,Form_Type,Request_Date,Queued_Date,Ticket_Type,Ticket_Category, 
-	Department,Location,Company_Name,AFX,Assignee,Completed_Date,Ticket_Status,Comments;
+	Department,Location,Company_Name,AFX,Assignee,Completed_Date,Ticket_Status,Comments,TicketsUpdatedBy,TicketsExtractedBy;
 	
 	public int getTesttable_id() {
 		return testtable_id;
@@ -21,6 +21,18 @@ public class TestTablePojo {
 	}
 	public void setTicket_Id(String ticket_Id) {
 		Ticket_Id = ticket_Id;
+	}
+	public String getTicketsUpdatedBy() {
+		return TicketsUpdatedBy;
+	}
+	public void setTicketsUpdatedBy(String ticketsUpdatedBy) {
+		TicketsUpdatedBy = ticketsUpdatedBy;
+	}
+	public String getTicketsExtractedBy() {
+		return TicketsExtractedBy;
+	}
+	public void setTicketsExtractedBy(String ticketsExtractedBy) {
+		TicketsExtractedBy = ticketsExtractedBy;
 	}
 	public String getName() {
 		return Name;
