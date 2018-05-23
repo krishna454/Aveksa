@@ -42,8 +42,8 @@ for(TestTablePojo testTable : TestTablelist) {
 	
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
-//	System.out.println(status+" and the user name is "+userName);
-	if(assigneed.equalsIgnoreCase(userName) && (status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold")))
+	//System.out.println(testTable.getTesttable_id()+"ticket number and status is "+status+" and the user name is "+userName+" assigned is "+assigneed);
+	if((assigneed.equalsIgnoreCase(userName) )&& (status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold")))
 			{
 	%>
 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
@@ -72,7 +72,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	<%
 	
 			}
-else if((status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold")) && admin.equalsIgnoreCase("yes"))
+else if((status.equalsIgnoreCase("Awaiting User info")||status.equalsIgnoreCase("Awaiting User confirmation")||status.equalsIgnoreCase("On-Hold")) && (admin.equalsIgnoreCase("yes")))
 
 {
 %>

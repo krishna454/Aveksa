@@ -33,7 +33,7 @@ function assigneTicket(id){
     f.submit();
 }
 </script>
- <body style="background-color:#daddd7;">   
+   
 <%
 
 //String userName=request.getParameter("userName");
@@ -44,7 +44,7 @@ function assigneTicket(id){
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
 
-    
+  <body style="background-color:#daddd7;">   
           <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
           <h2 class="mb-5" >Below are the assigned Tickets </h2>

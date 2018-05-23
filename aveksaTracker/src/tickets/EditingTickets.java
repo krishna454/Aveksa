@@ -66,7 +66,7 @@ public class EditingTickets {
 		ArrayList<TestTablePojo> TestTablelist = new ArrayList();
 		//System.out.println("id is "+id);
 		String query = "select * from testtable where Ticket_Id = '"+ticket+"'";
-		System.out.println(query);
+		//System.out.println(query);
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		TestTablePojo TestTablePojo=new TestTablePojo();

@@ -196,7 +196,7 @@ public class ExtractingTickets {
 			//Statement statement2 = connection.createStatement();
 			 
 		      PreparedStatement pstmt = connection.prepareStatement(updateDataIntoTable);
-	            System.out.println(pstmt);
+	            //System.out.println(pstmt);
 	             
 	             ResultSet rs = st.executeQuery(extract);
 	             

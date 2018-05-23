@@ -25,6 +25,14 @@
     
   </tr> 
 <%
+MySQLConnection MySQLConnection=new MySQLConnection();
+
+Connection con=MySQLConnection.getCon();
+
+Statement st = (Statement) con.createStatement();
+// System.out.println("creating statement");
+Statement st2 = (Statement) con.createStatement();
+ResultSet rs2 =  st2.executeQuery("select userName from userdetails");
 
 String id=request.getParameter("id");
 int no=Integer.parseInt(id);
@@ -49,6 +57,29 @@ for(TestTablePojo testTable : TestTablelist) {
 <td><%=testTable.getName() %></td>
 
    <td>
+   <% 
+   while(rs2.next())
+		{
+    		if((testTable.getAssignee()).equalsIgnoreCase(rs2.getString("userName")))
+    		{
+    			
+    	    	%>
+    	    	
+    	    	<input type="radio" name="Assignee" value="<%=testTable.getAssignee()%>" checked> <%=testTable.getAssignee()%><br>
+    	    	<%
+    		}
+    		else{
+    			
+    		
+    		%>
+    		<input type="radio" name="Assignee" value="<%=rs2.getString("userName")%>"> <%=rs2.getString("userName")%><br>
+    		
+    		
+    		<%
+    		}
+    		}
+    	%>
+   <!-- 
     <select name = "Assignee">
             <option value = "<%=testTable.getAssignee()%>"><%=testTable.getAssignee()%></option>
                <option value = "Ram">Ram</option>              
@@ -56,7 +87,7 @@ for(TestTablePojo testTable : TestTablelist) {
                <option value = "Namrata">Namrata</option>
                <option value = "Vijay">Vijay</option>
                <option value = "Arun">Arun</option>
-   </select>
+   </select> -->
    
  </td>
  
@@ -68,7 +99,7 @@ for(TestTablePojo testTable : TestTablelist) {
 }
 catch(Exception e){
 	e.printStackTrace();
-	response.sendRedirect("Login.jsp");
+	response.sendRedirect("Homepage.jsp");
 	
 }
 %>
