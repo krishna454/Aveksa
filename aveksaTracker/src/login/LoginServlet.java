@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
         {
         	if(dbPassword.equals(password))
         	{
-            System.out.println("OK");
+          //  System.out.println("OK");
             login = true;
             
             session.setAttribute("userId",dbUsername);
