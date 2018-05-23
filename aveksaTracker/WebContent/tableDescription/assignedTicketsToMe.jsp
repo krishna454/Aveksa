@@ -22,12 +22,13 @@
 String admin=null;
 String userName=null;
 MySQLConnection MySQLConnection=new MySQLConnection();
-
+int i=0;
 Connection con=MySQLConnection.getCon();
 try {
+	
 Statement st = (Statement) con.createStatement();
 // System.out.println("creating statement");
-ResultSet rs =  st.executeQuery("select * from userdetails where userid='"+userid+"' ");
+ResultSet rs =  st.executeQuery("select Admin,userName from userdetails where userid='"+userid+"' ");
 while(rs.next()){
 admin = rs.getString("Admin");
 userName=rs.getString("userName");
@@ -38,14 +39,20 @@ MySQLConnection=null;
 
 TestTableData testTableData=new TestTableData();
 ArrayList<TestTablePojo> TestTablelist = testTableData.getTestTableData();
+
+System.out.println("size is very big");
+System.out.println("size of the test table is "+TestTablelist.size());
+
 for(TestTablePojo testTable : TestTablelist) {
+	i++;
 	
 	String status=testTable.getTicket_Status();
 	String assigneed= testTable.getAssignee();
-	
+	System.out.println(testTable.getTesttable_id()+" its ticket id and assignee is "+assigneed);
+
 	if(status.equalsIgnoreCase("Assigned") && assigneed.equalsIgnoreCase(userName) )
 			{
-	%>
+			%>
 	<td><input type="button" name="edit" value="Edit" style="background-color:green;font-weight:bold;color:white;" onclick="editInprogressRecord(<%=testTable.getTesttable_id()%>);" ></td>
 	<td><%= testTable.getTesttable_id() %></td>
     <td><%=testTable.getTicket_Id() %></td>
@@ -102,10 +109,13 @@ else if(status.equalsIgnoreCase("Assigned") && admin.equalsIgnoreCase("yes"))
 <%
 
 }
-}}
+}
+
+System.out.println("in assinged tickets how many records we are getting is "+i);
+}
 catch(Exception e)
 {
-	
+	System.out.println("in assinged tickets how many records we are getting is "+i);
 }
 %>
 </table>

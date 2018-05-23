@@ -31,7 +31,7 @@ import pojo.TestTablePojo;
 		Connection conn = DBConnection.getCon();
 		 Statement st=conn.createStatement();
 		 
-		 ResultSet rs1=st.executeQuery("selecte userName from userdetails where userid='"+userID+"'");
+		 ResultSet rs1=st.executeQuery("select userName from userdetails where userid='"+userID+"'");
 		 
 		 while(rs1.next())
 		 {

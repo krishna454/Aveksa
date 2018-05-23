@@ -17,7 +17,7 @@ public class TestTableData {
 	
 	MySQLConnection mySQLConnection=new MySQLConnection();
 			
-			
+		//	int i=0;
 			try {
 		
 				Connection con=mySQLConnection.getCon();
@@ -25,6 +25,7 @@ public class TestTableData {
 	       // System.out.println("creating statement for TestTable");
 	        ResultSet rs =  st.executeQuery("select * from testtable");
 	        while(rs.next()){
+	        	//i++;
 	        	TestTablePojo TestTablePojo=new TestTablePojo();
 	        	TestTablePojo.setTesttable_id(rs.getInt("testtable_id"));
 	        	TestTablePojo.setTicket_Id(rs.getString("Ticket_Id"));
@@ -52,7 +53,7 @@ public class TestTableData {
 	        	        }
 	        
 	        con.close();
-	    
+	       // System.out.println("count of the records we are getting is "+i);
 	        }
 	        catch(Exception e) {
 	        	

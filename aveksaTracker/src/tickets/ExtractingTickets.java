@@ -88,7 +88,7 @@ public class ExtractingTickets {
 			String AFX="No";
 			//String Assignee="NotAssigned";
 			String queDate=dtf.format(now);
-			
+			String extractedBy=null;
 			
 			//past the data into the got datas
 		//	String addData="INSERT INTO testtable("+"Name," +  "Request_Date,)"+ "VALUES(?,?)";
@@ -101,6 +101,13 @@ public class ExtractingTickets {
 		       //System.out.println(connection);
 		        
 		        Statement st = (Statement) connection.createStatement();
+		        
+		        ResultSet rs1=st.executeQuery("select userName from userdetails where userid='"+userId+"'");
+				 
+				 while(rs1.next())
+				 {
+					 extractedBy=rs1.getString("userName");
+				 }
 		      
 		        //Getting the row number
 		        
@@ -251,7 +258,7 @@ public class ExtractingTickets {
 	            	   pstmt.setString(9, "Aveksa");
 	               }
 	               
-	               pstmt.setString(10, userId);
+	               pstmt.setString(10, extractedBy);
 	             //  System.out.println("its while loop");
 	               pstmt.executeUpdate();
 	              // System.out.println("its while loop 2 "+count);
