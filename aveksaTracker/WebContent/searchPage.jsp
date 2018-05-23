@@ -351,7 +351,7 @@ catch(Exception e)
 {
 	
 	e.printStackTrace();
-	response.sendRedirect("Login.jsp");
+	response.sendRedirect("Homepage.jsp");
 }
 
 %>
