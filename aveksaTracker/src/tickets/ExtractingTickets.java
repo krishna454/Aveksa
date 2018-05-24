@@ -250,14 +250,9 @@ public class ExtractingTickets {
 	               pstmt.setString(7, AFX);
 	               pstmt.setString(8, Assignee[count]);
 	             //  System.out.println("its while loop");
-	               if(name.contains("INC")|| name.contains("TASK"))
-	               {
-	            	   pstmt.setString(9, "Snow"); 
-	               }
-	               else {
-	            	   pstmt.setString(9, "Aveksa");
-	               }
 	               
+	            	   pstmt.setString(9, "Aveksa");
+	           
 	               pstmt.setString(10, extractedBy);
 	             //  System.out.println("its while loop");
 	               pstmt.executeUpdate();

@@ -4,7 +4,8 @@ package tickets;
 
 
 	import java.sql.Connection;
-	import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 	import java.sql.SQLException;
 	import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -136,14 +137,61 @@ import pojo.TestTablePojo;
 	//String for getting values from database
 		//String Assigned=null;
 		
-		FormTypeArrayList formTypeArrayList=new FormTypeArrayList();  
+		//FormTypeArrayList formTypeArrayList=new FormTypeArrayList();  
 		MySQLConnection DBConnection=new MySQLConnection();
 		Connection conn = DBConnection.getCon();
 		 Statement st=conn.createStatement();
 		 
 		 String query="update testtable set  Assignee='"+Assignee+"',TicketsExtractedBy='"+exctractedBy+"'  where testtable_id='"+num+"'";	
 		  st.executeUpdate(query);
+		  
 		 
+	}
+		
+	
+	public void updateAddTickets(int num,String ticket_Name,String userid) throws SQLException
+	{
+		
+	//String for getting values from database
+		//String Assigned=null;
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
+		String Queue_Request_Date= dtf.format(now);
+		String userName=null;
+	//	FormTypeArrayList formTypeArrayList=new FormTypeArrayList();  
+		MySQLConnection DBConnection=new MySQLConnection();
+		Connection conn = DBConnection.getCon();
+		 Statement st=conn.createStatement();
+      ResultSet rs1=st.executeQuery("select userName from userdetails where userid='"+userid+"'");
+		 
+		 while(rs1.next())
+		 {
+			 userName=rs1.getString("userName");
+		 }
+		 
+		 
+		 String query="insert into testtable ("+"testtable_id,"+"Ticket_Id,"+"Name,"+"Request_Date,"+"Queued_Date,"+"AFX,"+"Assignee,"+"Ticket_Type,"+"TicketsExtractedBy,"+"Ticket_Status)" + " VALUES(?,?,?,?,?,?,?,?,?,?) ";
+		// String query="update testtable set  Assignee='"+Assignee+"',TicketsExtractedBy='"+exctractedBy+"'  where testtable_id='"+num+"'";	
+		//  st.executeUpdate(query);
+		 PreparedStatement pstmt = conn.prepareStatement(query);
+		 
+		 pstmt.setInt(1,num);
+		 pstmt.setString(2, ticket_Name);
+		 pstmt.setString(3, ticket_Name);
+		 pstmt.setString(4, Queue_Request_Date);
+		 pstmt.setString(5, Queue_Request_Date);
+		 pstmt.setString(6, "No");
+		 pstmt.setString(7, userName);
+		 pstmt.setString(8, "Snow");
+		 pstmt.setString(9,userName);
+		 pstmt.setString(10,"Assigned");
+		 pstmt.executeUpdate();
+		pstmt.close();
+		rs1.close();
+		st.close();
+		conn.close();
+		DBConnection=null;
+		System.gc();
 	}
 		
 

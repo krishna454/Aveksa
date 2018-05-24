@@ -34,7 +34,7 @@ public class DeleteUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String userID=request.getParameter("duser_Id");
-		System.out.println("user id "+userID);
+		//System.out.println("user id "+userID);
 MySQLConnection MySQLConnection=new MySQLConnection();
 		
 		Connection con=MySQLConnection.getCon();
@@ -49,7 +49,7 @@ MySQLConnection MySQLConnection=new MySQLConnection();
 		e.printStackTrace();	
 		}
 		
-		 response.sendRedirect("addedUser.jsp");
+		 response.sendRedirect("deletedUser.jsp");
 		
 	}
 

@@ -207,7 +207,11 @@ tr:nth-child(even) {
 	 <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="TicketsExtractedBy.jsp">Tickets Extracted By</a>
           </li>
-	
+           
+             <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#addSnowTicket">Add Snow Ticket</a>
+          </li>
+           
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">All  Tickets</a>
           </li>
@@ -331,6 +335,19 @@ tr:nth-child(even) {
         </div></div>   
        
       </section> 
+      
+      
+      
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="addSnowTicket">
+        <div class="my-auto">
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">
+          
+          <jsp:include page="addTicketQueue.jsp" />
+     
+      </section> 
+       
        
    
 <!-- Inprogress tickets -->

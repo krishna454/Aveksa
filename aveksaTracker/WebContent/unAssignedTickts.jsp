@@ -33,17 +33,17 @@ function assigneTicket(id){
     f.submit();
 }
 </script>
-   
+  
 <%
 
 //String userName=request.getParameter("userName");
 %>
-</head>
+
 
   <%@ page import="pojo.TestTablePojo" %>
           <%@ page import ="java.util.ArrayList" %>
           <%@ page import ="database.TestTableData" %>
-
+ </head>
   <body style="background-color:#daddd7;">   
           <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
@@ -55,8 +55,9 @@ function assigneTicket(id){
      
      
      <a href="Homepage.jsp" >click me to go Home Page</a>
-               <form method="post" name="unAssingedForm">
-<table>    
+   <form method="post" name="unAssingedForm">
+   
+<table  border="1">    
   
   <tr>
   <th>Editing</th>
@@ -81,7 +82,7 @@ function assigneTicket(id){
     <th>Comments</th>
      -->
   </tr> 
- 
+
    <% try {
             	String userid=session.getAttribute("userId").toString(); 
 
@@ -101,7 +102,7 @@ for(TestTablePojo testTable : TestTablelist) {
 	%>
 
 
-	<tr>
+	 <tr>
 	<td><input type="button" name="edit" value="Edit" style="background-color:green;  font-weight:bold;color:white;" onclick="assigneTicket(<%=testTable.getTesttable_id()%>);" ></td>
 	<td><%= testTable.getTesttable_id() %></td>
     <td><%=testTable.getTicket_Id() %></td>
@@ -119,6 +120,7 @@ for(TestTablePojo testTable : TestTablelist) {
     }
  
 %>
+
 </table>
 </h3>
  </div></div></div></section>
